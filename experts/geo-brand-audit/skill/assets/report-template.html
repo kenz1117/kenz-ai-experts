@@ -255,7 +255,7 @@ section{padding:52px 0 0}
 .dim-meter i{display:block;height:100%;transform-origin:left;animation:barIn .6s var(--ease) both}
 .dim-cm{font-size:12.5px;color:var(--ink-2);line-height:1.6}
 .dim-chips{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap}
-.dim .chip{background:var(--card)}
+.dim .chip:not(.L1){background:var(--card)}
 .dim-flag{
   font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;
   color:var(--paper);background:var(--bad);text-transform:uppercase;
@@ -668,25 +668,26 @@ function radar(dims){
   // 优先画分维度基准（来自实测/累积/配置）；取不到才退回单一总分正六边形；
   // 都没有就不画 —— 留白而不是编一个数字。
   if(BMT && BMT.scores){
-    var pts=[], knownIdx=[];
+    // 注意：基准用独立的 benchPts 变量，绝不可与数据 pts 同名（var 是函数级作用域，会覆盖外层数据点）
+    var benchPts=[], knownIdx=[];
     for(var q=0;q<n;q++){
       var bv = BMT.scores[dims[q].code];
       if(bv===null || bv===undefined) continue;
       var ba=-Math.PI/2+q*2*Math.PI/n;
       var rr=R*(Math.max(0,Math.min(100,bv))/100);
-      pts.push((cx+rr*Math.cos(ba)).toFixed(1)+','+(cy+rr*Math.sin(ba)).toFixed(1));
+      benchPts.push((cx+rr*Math.cos(ba)).toFixed(1)+','+(cy+rr*Math.sin(ba)).toFixed(1));
       knownIdx.push(q);
     }
-    if(pts.length>=2){
+    if(benchPts.length>=2){
       var bdash = BMT.source==='measured' ? '' : (BMT.source==='accumulated' ? '5 4' : '2 3');
       var bop = BMT.source==='measured' ? '.8' : '.7';
       // 已知点全部相邻且凑齐全部轴 → 闭合多边形；否则画开放折线（不虚构缺失轴）
       var closed = (knownIdx.length===n);
-      grid += (closed ? '<polygon points="' : '<polyline points="') + pts.join(' ') + '" fill="none" '+
+      grid += (closed ? '<polygon points="' : '<polyline points="') + benchPts.join(' ') + '" fill="none" '+
         'stroke="#B3261E" stroke-width="'+(BMT.source==='measured'?'1.7':'1.4')+'" '+
         (bdash?'stroke-dasharray="'+bdash+'" ':'')+'opacity="'+bop+'" stroke-linejoin="round"/>';
       // 在已知轴上点一个小方块，标出基准落点
-      pts.forEach(function(pp){
+      benchPts.forEach(function(pp){
         var c=pp.split(',');
         grid+='<rect x="'+(+c[0]-2.5).toFixed(1)+'" y="'+(+c[1]-2.5).toFixed(1)+
               '" width="5" height="5" fill="#B3261E" opacity="'+bop+'"/>';
