@@ -359,6 +359,158 @@ if (st.SENTIMENT) {
   }
 }
 
+// ── 多源交叉分析层（可选阶段5：社媒 + 热搜） ──
+var XA = report.cross;
+if (XA) {
+  w('## 多源交叉分析');
+  blank();
+
+  if (!XA.available) {
+    w('> 本次审计**未采集**社媒与热搜信号（阶段5），因此不输出叙事鸿沟、三源矩阵与危机评分。');
+    blank();
+    w('> 这三项一律依赖真实数据计算 —— 缺数据即留白，不用 AI 估计值补位。');
+    blank();
+  } else {
+    var NG = XA.narrativeGap;
+    var TSX = XA.threeSource;
+    var CX = XA.crisis;
+
+    /* — 叙事鸿沟 — */
+    w('### 叙事鸿沟');
+    blank();
+    w('检索叙事情绪 **' + (NG.searchSentiment === null ? '—' : signed(NG.searchSentiment)) +
+      '** · 社媒口碑情绪 **' + (NG.socialSentiment === null ? '—' : signed(NG.socialSentiment)) +
+      '** · 鸿沟 **' + (NG.gap === null ? '—' : signed(NG.gap)) + '（' + cell(NG.verdictLabel) + '）**');
+    blank();
+    w('> ' + NG.verdictHint);
+    blank();
+    w('情绪分 = 正面% − 负面%，区间 −100 ~ +100。鸿沟 = 检索叙事 − 社媒口碑，正值越大说明公开叙事越偏离真实口碑。');
+    blank();
+    w('| 口径 | 正面% | 负面% | 情绪分 |');
+    w('|---|:--:|:--:|:--:|');
+    if (st.SENTIMENT && st.SENTIMENT.distribution) {
+      var dS = st.SENTIMENT.distribution;
+      w('| 检索叙事 | ' + cell(dS.positive) + '% | ' + cell(dS.negative) + '% | ' +
+        (NG.searchSentiment === null ? '—' : signed(NG.searchSentiment)) + ' |');
+    }
+    if (st.SOCIAL && st.SOCIAL.distribution) {
+      var dO = st.SOCIAL.distribution;
+      w('| 社媒口碑 | ' + cell(dO.positive) + '% | ' + cell(dO.negative) + '% | ' +
+        (NG.socialSentiment === null ? '—' : signed(NG.socialSentiment)) + ' |');
+    }
+    blank();
+
+    /* — 三源矩阵 — */
+    w('### 三源可见度矩阵');
+    blank();
+    w('| 信号源 | 指数 | 档位 / 评级 | 高-低分界 | 判定 |');
+    w('|---|:--:|:--:|:--:|:--:|');
+    [
+      { nm: '检索可见度', v: TSX.visibilityIndex, th: TSX.thresholds.visibility,
+        band: TSX.visibilityIndex === null ? '未采集' : S.levelOf(TSX.visibilityIndex).label },
+      { nm: '社媒声量', v: TSX.socialIndex, th: TSX.thresholds.social,
+        band: TSX.bands.social ? TSX.bands.social.label : '未采集' },
+      { nm: '热搜热度', v: TSX.hotIndex, th: TSX.thresholds.hotsearch,
+        band: TSX.bands.hotsearch ? TSX.bands.hotsearch.label : '未采集' }
+    ].forEach(function (r) {
+      var judge = r.v === null ? '—' : (r.v >= r.th ? '高' : '低');
+      w('| ' + r.nm + ' | ' + (r.v === null ? '—' : r.v) + ' | ' + r.band + ' | ' + r.th + ' | ' + judge + ' |');
+    });
+    blank();
+    w('**象限落点**：' + TSX.quadrantLabel + ' — ' + TSX.quadrantHint);
+    blank();
+    w('> 三源量纲不同：检索可见度为 0-100 质量分（分界 ' + TSX.thresholds.visibility +
+      '，对齐本报告「一般」评级线）；社媒与热搜为对数归一化的声量档位（分界 ' + TSX.thresholds.social +
+      '）。仅作相对定位，不代表绝对市场份额。');
+    blank();
+
+    /* — 危机三通道 — */
+    w('### 危机三通道');
+    blank();
+    w('危机评分 **' + CX.score + ' / 100（' + CX.levelLabel + '）** · ' +
+      CX.triggeredCount + ' / ' + CX.channelsWithData + ' 个有数据的通道触发 · 评分可信度 ' + CX.confidence + '%');
+    blank();
+    w('| 通道 | 状态 | 强度 | 判读 |');
+    w('|---|:--:|:--:|---|');
+    CX.channels.forEach(function (ch) {
+      var flag = !ch.hasData ? '未采集' : (ch.triggered ? '⚠️ 触发' : '正常');
+      w('| ' + cell(ch.name) + ' | ' + flag + ' | ' + ch.intensity + ' | ' + cell(ch.reason) + ' |');
+    });
+    blank();
+
+    /* — 社媒真实样本 — */
+    if (st.SOCIAL && Array.isArray(st.SOCIAL.posts) && st.SOCIAL.posts.length) {
+      w('### 社媒真实样本');
+      blank();
+      var platTxt = (st.SOCIAL.platforms || []).map(function (p) {
+        return cell(p.platform) + ' ' + cell(p.itemCount) + ' 条';
+      }).join(' · ');
+      if (platTxt) {
+        w('平台分布：' + platTxt +
+          (st.SOCIAL.windowDays ? ' · 采集窗口 ' + st.SOCIAL.windowDays + ' 天' : '') +
+          ' · 证据覆盖 ' + covTag(st.SOCIAL.evidenceCoverage));
+        blank();
+      }
+      w('| 平台 | 标题（点击核查原帖） | 情绪 | 互动量 | 证据 |');
+      w('|---|:--:|---|:--:|---|');
+      st.SOCIAL.posts.forEach(function (p) {
+        var title = p.url ? '[' + cell(p.title) + '](' + p.url + ')' : cell(p.title);
+        var sl = p.sentiment === 'negative' ? '负面' : (p.sentiment === 'positive' ? '正面' : '中性');
+        w('| ' + cell(p.platform) + ' | ' + title + ' | ' + sl + ' | ' +
+          (p.engagement ? p.engagement : '—') + ' | ' + evTag(p.evidence) + ' |');
+      });
+      blank();
+      if (Array.isArray(st.SOCIAL.topTopics) && st.SOCIAL.topTopics.length) {
+        w('**高频议题**（可反哺检索词与内容选题）');
+        blank();
+        w('| 议题 | 出现次数 | 情绪 |');
+        w('|---|:--:|:--:|');
+        st.SOCIAL.topTopics.forEach(function (t) {
+          var tl = t.sentiment === 'negative' ? '负面' : (t.sentiment === 'positive' ? '正面' : '中性');
+          w('| ' + cell(t.topic) + ' | ' + cell(t.count) + ' | ' + tl + ' |');
+        });
+        blank();
+      }
+    }
+
+    /* — 热搜条目 — */
+    if (st.HOTSEARCH && Array.isArray(st.HOTSEARCH.items) && st.HOTSEARCH.items.length) {
+      w('### 热搜信号');
+      blank();
+      w('品牌上榜：**' + (st.HOTSEARCH.brandOnList ? '是' : '否') + '**' +
+        (st.HOTSEARCH.maxBrandHeat ? ' · 最高热度 ' + st.HOTSEARCH.maxBrandHeat : '') +
+        (st.HOTSEARCH.categoryHeat ? ' · 品类环境热度 ' + st.HOTSEARCH.categoryHeat : '') +
+        (st.HOTSEARCH.negativeAssociation ? ' · **关联负面**' : '') +
+        ' · 证据覆盖 ' + covTag(st.HOTSEARCH.evidenceCoverage));
+      blank();
+      w('| 平台 | 条目 | 命中品牌 | 热度 | 情绪 | 证据 |');
+      w('|---|:--:|:--:|:--:|---|:--:|---|');
+      st.HOTSEARCH.items.forEach(function (i) {
+        var title = i.url ? '[' + cell(i.title) + '](' + i.url + ')' : cell(i.title);
+        w('| ' + cell(i.platform) + ' | ' + title + ' | ' + (i.brandHit ? '是' : '否') + ' | ' +
+          (i.heat ? i.heat : '—') + ' | ' + cell(i.sentiment || '—') + ' | ' + evTag(i.evidence) + ' |');
+      });
+      blank();
+    }
+
+    /* — 竞品多维并集 — */
+    if (XA.competitorUnion && XA.competitorUnion.length) {
+      w('### 竞品多维并集');
+      blank();
+      w('| 竞品 | 检索声量 | 社媒提及 | 上热搜 | 覆盖源 |');
+      w('|---|--:|--:|:--:|---|');
+      XA.competitorUnion.forEach(function (x) {
+        w('| ' + cell(x.name) + ' | ' + (x.searchShare === null ? '—' : pct(x.searchShare)) + ' | ' +
+          (x.socialMentions === null ? '—' : x.socialMentions) + ' | ' + (x.onHotsearch ? '是' : '否') + ' | ' +
+          cell(x.sources.join(' · ')) + ' |');
+      });
+      blank();
+      w('> 覆盖源越多，说明该竞品在越多场景下与你正面竞争。');
+      blank();
+    }
+  }
+}
+
 // ── 根因分析（咨询式） ──
 if (st.SCORE && Array.isArray(st.SCORE.dimensions)) {
   var rcList = st.SCORE.dimensions.filter(function (d) { return d.rootCause; })
