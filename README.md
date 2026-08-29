@@ -8,7 +8,7 @@ KenZ 的 AI 专家智能体仓库 —— 一个 monorepo，收纳所有可复用
 
 | 专家 | 花名 | 分类 | 版本 | 简介 | 路径 |
 | --- | --- | --- | --- | --- | --- |
-| `geo-brand-audit` | 品牌GEO顾问 | 05-营销增长 | v1.1.0 | 可核查证据审计品牌在 AI 搜索的可见度：六维评分 + 竞品共现 + 多源交叉分析（社媒/热搜）+ HTML/MD 交付 | [experts/geo-brand-audit](experts/geo-brand-audit) |
+| `geo-brand-audit` | 品牌GEO顾问 | 05-营销增长 | v1.2.0 | 可核查证据审计品牌在 AI 搜索的可见度：六维评分 + 竞品共现 + 多源交叉分析（社媒/热搜）+ HTML/MD 交付 | [experts/geo-brand-audit](experts/geo-brand-audit) |
 
 ### geo-brand-audit 的能力边界（选这个专家前先看）
 
