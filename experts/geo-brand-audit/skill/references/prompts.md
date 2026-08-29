@@ -507,3 +507,93 @@ dimensions 必须是 6 项且 code 固定。totalScore = Σ(score × weight)。
 
 直接输出 JSON，不包裹代码块。
 ```
+
+---
+
+## 阶段5 多源信号（可选 · 社媒 + 热搜）
+
+> **本阶段是可选的**，只在需要「叙事鸿沟 / 三源矩阵 / 危机预警」时才跑。
+> quick 档跳过；standard 档建议跑；deep 档必跑。
+> 阶段5 缺失不会阻断主流水线 —— 六维评分与行动清单都不依赖它。
+
+```
+你是品牌信号采集员。请采集「{品牌名}（{品类}）」在真实社媒与热搜上的公开信号。
+
+【铁律 —— 与「AI 编舆情」的分界线】
+1. 只记录你**真实检索到**的条目。检索不到就写检索不到，绝不补全、绝不"合理推测"。
+2. 每条帖子/热搜条目必须有 url。没有 url 的条目，**删掉它**，而不是留空 url。
+   校验器会把缺失 url 的样本判为错误 —— 因为它无法被核查，等同编造。
+3. 至少覆盖 2 个平台（建议 3 个）。单平台样本会触发"结论可能偏颇"的警告。
+4. 情绪判定必须基于标题/正文的实际表述，不基于你的品牌印象。
+   拿不准就标 neutral，不要猜。
+5. 互动量如实记录。平台不给互动数据就留空，不要估算。
+
+【采集范围】
+- 时间窗：近 {windowDays} 天（默认 30）
+- 社媒：小红书 / 抖音 / 公众号 为主，微博 / B站 / 知乎 视品类补充
+- 热搜：微博 / 抖音 / 百度 / 知乎 等，记录品牌词命中情况与品类环境热度
+
+【输出 JSON】
+{
+  "SOCIAL": {
+    "platforms": [
+      { "platform": "xhs", "itemCount": 10, "engagement": 23400,
+        "evidence": { "level": "L2", "sources": [{"url": "<检索结果页URL>", "title": "<标题>"}] } }
+    ],
+    "posts": [
+      { "platform": "xhs",
+        "title": "<帖子标题原文>",
+        "url": "<原帖链接，必须可点击>",
+        "sentiment": "positive|neutral|negative",
+        "engagement": 8600,
+        "publishedAt": "2026-08-12",
+        "evidence": { "level": "L2", "sources": [{"url": "<URL>", "title": "<标题>"}] } }
+    ],
+    "distribution": { "positive": 30, "neutral": 40, "negative": 30 },
+    "negativeRate": 0.3,
+    "topTopics": [
+      { "topic": "<高频议题>", "count": 24, "sentiment": "negative" }
+    ],
+    "competitorsMentioned": [
+      { "name": "<社媒中共现的竞品>", "mentions": 18 }
+    ],
+    "windowDays": 30,
+    "evidenceCoverage": { "L1": 0.2, "L2": 0.8, "L3": 0 },
+    "note": "<采集受限说明，如某平台不可达>"
+  },
+  "HOTSEARCH": {
+    "items": [
+      { "platform": "wb",
+        "title": "<热搜条目原文>",
+        "url": "<链接，有则填>",
+        "heat": 486000,
+        "brandHit": true,
+        "sentiment": "negative",
+        "evidence": { "level": "L2", "sources": [{"url": "<URL>", "title": "<标题>"}] } }
+    ],
+    "brandOnList": true,
+    "maxBrandHeat": 486000,
+    "categoryHeat": 2100000,
+    "negativeAssociation": true,
+    "windowDays": 30,
+    "evidenceCoverage": { "L1": 0, "L2": 1, "L3": 0 },
+    "note": "<说明>"
+  }
+}
+
+【字段口径】
+- distribution 三项合计必须等于 100
+- brandOnList 必须与 items 中 brandHit=true 的条数一致（有则 true，无则 false）
+- heat 原样记录平台热度值，不做跨平台归一化（归一化由脚本统一处理）
+- categoryHeat 是**品类整体**的热度，用来判断品类在升温还是降温
+- competitorsMentioned 只填你在社媒内容里**真实看到**被一起讨论的品牌
+
+【采集不到怎么办 —— 重要】
+- 某平台完全检索不到 → 不要写空数组假装采过。删掉该平台，
+  并在 note 写明"XX 平台未检索到有效结果"
+- 整个社媒都采不到 → 直接**不输出 SOCIAL 这个 key**，只输出 HOTSEARCH，或两者都不输出。
+  宁可让报告显示"未采集"，也不要产出一份看起来完整但无法核查的数据
+- 缺数据不会让报告失败，编数据才会
+
+直接输出 JSON，不包裹代码块。
+```
