@@ -497,6 +497,53 @@ details.sim[open] summary::before{transform:rotate(90deg)}
   font-family:var(--f-mono);letter-spacing:.02em;
 }
 
+/* ══════════ 多源交叉分析 ══════════ */
+.x-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.x-lab{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-4);margin-bottom:14px}
+
+/* 叙事鸿沟 —— 双向轴：0 居中，负向左(红)、正向右(绿) */
+.x-gap{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.x-gap-num{font-family:var(--f-mono);font-size:38px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.x-gap-lb{font-size:12.5px;font-weight:650;padding:3px 10px;border-radius:3px}
+.x-gap-hint{font-size:12.5px;color:var(--ink-3);line-height:1.6;margin-top:8px}
+.x-axis{margin-top:18px;padding-top:16px;border-top:1px solid var(--rule-soft)}
+.x-axis-row{display:flex;align-items:center;gap:12px;margin-bottom:11px;font-size:12.5px}
+.x-axis-nm{width:66px;color:var(--ink-2);flex:none}
+.x-axis-track{position:relative;flex:1;height:16px;background:var(--paper-2);border-radius:2px;overflow:hidden}
+.x-axis-mid{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--rule);z-index:2}
+.x-axis-fill{position:absolute;top:2px;bottom:2px;border-radius:1px}
+.x-axis-v{width:46px;text-align:right;font-family:var(--f-mono);font-weight:650;flex:none;font-size:13px}
+.x-legend{margin-top:12px;font-size:11.5px;color:var(--ink-4);line-height:1.6}
+
+/* 三源矩阵 */
+.x-src{display:flex;align-items:center;gap:12px;margin-bottom:15px}
+.x-src-nm{width:76px;font-size:12.5px;color:var(--ink-2);flex:none}
+.x-src-track{flex:1;height:10px;background:var(--paper-2);border-radius:5px;overflow:hidden;position:relative}
+.x-src-fill{height:100%;border-radius:5px}
+.x-src-th{position:absolute;top:-2px;bottom:-2px;width:1px;background:var(--ink-4);opacity:.5;z-index:2}
+.x-src-v{width:34px;text-align:right;font-family:var(--f-mono);font-size:13px;font-weight:700;flex:none}
+.x-src-bd{font-size:11px;color:var(--ink-3);margin-left:8px;white-space:nowrap}
+.x-quad{margin-top:18px;padding:14px 16px;border-left:3px solid;border-radius:2px;background:var(--paper-2)}
+.x-quad-lb{font-size:14px;font-weight:700;margin-bottom:4px}
+.x-quad-hint{font-size:12.5px;color:var(--ink-3);line-height:1.6}
+
+/* 危机三通道 */
+.x-cr{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule-soft)}
+.x-cr:last-child{border-bottom:0;padding-bottom:0}
+.x-cr:first-child{padding-top:0}
+.x-dot{width:9px;height:9px;border-radius:50%;flex:none;margin-top:5px}
+.x-cr-b{flex:1;min-width:0}
+.x-cr-t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:3px}
+.x-cr-nm{font-size:13px;font-weight:650;color:var(--ink)}
+.x-cr-i{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.x-cr-r{font-size:12.5px;color:var(--ink-3);line-height:1.55}
+.x-cr-track{height:4px;background:var(--paper-2);border-radius:2px;margin-top:8px;overflow:hidden}
+.x-cr-fill{height:100%;border-radius:2px}
+.x-cr-hd{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+.x-cr-score{font-family:var(--f-mono);font-size:26px;font-weight:700;line-height:1}
+.x-cr-lv{font-size:12.5px;font-weight:650;padding:3px 10px;border-radius:3px}
+.x-src-note{font-size:11.5px;color:var(--ink-4);margin-top:10px;line-height:1.6}
+
 /* ══════════ 打印 ══════════ */
 @media print{
   body{background:#fff;padding:0}
@@ -514,6 +561,9 @@ details.sim[open] summary::before{transform:rotate(90deg)}
   .hero-fig{border-right:0;border-bottom:1px solid var(--rule-soft);padding:26px 0}
   .hero-body{padding:26px 0}
   .sec-note{margin-left:0;width:100%}
+  .x-grid{grid-template-columns:1fr}
+  .x-axis-nm{width:54px}
+  .x-src-nm{width:62px}
 }
 </style>
 </head>
@@ -988,6 +1038,155 @@ if(S.COMPETITIVE && S.COMPETITIVE.shareOfVoice && S.COMPETITIVE.shareOfVoice.len
       (S.COMPETITIVE.brandRank?'<span class="sec-note"><span class="rank-badge">本品牌第 <b>'+esc(S.COMPETITIVE.brandRank)+'</b> 位</span></span>':'')+
     '</div><div class="sec-rule"></div>'+
     '<div class="card">'+sv+'</div></section>';
+}
+
+/* ══════ 多源交叉分析（可选阶段5：社媒 + 热搜） ══════ */
+var X = A.cross;
+if(X){
+  if(!X.available){
+    // 未采集阶段5 —— 明确告知，不做任何估算（与「无证据不补数」一致）
+    H+='<section class="reveal"'+REVEAL()+'>'+
+      '<div class="sec-head"><span class="sec-no">'+secNum()+'</span><h2 class="sec-title">多源交叉分析</h2>'+
+        '<span class="sec-note">未采集，不做估算</span></div>'+
+      '<div class="sec-rule"></div>'+
+      '<div class="card"><p class="empty">本次审计未采集社媒与热搜信号（阶段5），因此不输出叙事鸿沟、三源矩阵与危机评分。<br>'+
+        '这三项一律依赖真实数据计算 —— 缺数据即留白，不用 AI 估计值补位。</p></div></section>';
+  } else {
+    var G = X.narrativeGap, TS = X.threeSource, CR = X.crisis;
+
+    // 双向轴：情绪分 ∈ [-100,100]，0 居中
+    function axisRow(nm, v){
+      if(v===null||v===undefined){
+        return '<div class="x-axis-row"><span class="x-axis-nm">'+esc(nm)+'</span>'+
+          '<span class="x-axis-track"><i class="x-axis-mid"></i></span>'+
+          '<span class="x-axis-v" style="color:var(--ink-4)">—</span></div>';
+      }
+      var w = Math.abs(v)/2;
+      var left = v>=0 ? 50 : 50-w;
+      var c = v>=0 ? 'var(--good)' : 'var(--bad)';
+      return '<div class="x-axis-row"><span class="x-axis-nm">'+esc(nm)+'</span>'+
+        '<span class="x-axis-track"><i class="x-axis-mid"></i>'+
+        '<i class="x-axis-fill" style="left:'+left.toFixed(1)+'%;width:'+Math.max(0.6,w).toFixed(1)+'%;background:'+c+'"></i></span>'+
+        '<span class="x-axis-v" style="color:'+c+'">'+signed(v)+'</span></div>';
+    }
+
+    var gNum = (G.gap===null||G.gap===undefined)
+      ? '<span class="x-gap-num" style="color:var(--ink-4)">—</span>'
+      : '<span class="x-gap-num" style="color:'+G.verdictColor+'">'+signed(G.gap)+'</span>';
+    var gCard = '<div class="card">'+
+      '<div class="x-lab">叙事鸿沟 · Narrative Gap</div>'+
+      '<div class="x-gap">'+gNum+
+        '<span class="x-gap-lb" style="background:'+G.verdictColor+'18;color:'+G.verdictColor+'">'+esc(G.verdictLabel)+'</span></div>'+
+      '<div class="x-gap-hint">'+esc(G.verdictHint)+'</div>'+
+      '<div class="x-axis">'+
+        axisRow('检索叙事', G.searchSentiment)+
+        axisRow('社媒口碑', G.socialSentiment)+
+        '<div class="x-legend">情绪分 = 正面% − 负面%，区间 −100 ~ +100，中线为 0。'+
+          '鸿沟 = 检索叙事 − 社媒口碑，正值越大说明公开叙事越偏离真实口碑。</div>'+
+      '</div></div>';
+
+    function srcRow(nm, v, th, band){
+      if(v===null||v===undefined){
+        return '<div class="x-src"><span class="x-src-nm">'+esc(nm)+'</span>'+
+          '<span class="x-src-track"><i class="x-src-th" style="left:'+th+'%"></i></span>'+
+          '<span class="x-src-v" style="color:var(--ink-4)">—</span>'+
+          '<span class="x-src-bd" style="color:var(--ink-4)">未采集</span></div>';
+      }
+      var c = band ? band.color : (v>=th ? 'var(--good)' : 'var(--warn)');
+      return '<div class="x-src"><span class="x-src-nm">'+esc(nm)+'</span>'+
+        '<span class="x-src-track"><i class="x-src-th" style="left:'+th+'%"></i>'+
+        '<i class="x-src-fill" style="width:'+Math.max(1,v)+'%;background:'+c+'"></i></span>'+
+        '<span class="x-src-v" style="color:'+c+'">'+v+'</span>'+
+        (band?'<span class="x-src-bd">'+esc(band.label)+'</span>':'')+'</div>';
+    }
+
+    var sCard = '<div class="card">'+
+      '<div class="x-lab">三源可见度矩阵</div>'+
+      srcRow('检索可见度', TS.visibilityIndex, TS.thresholds.visibility, null)+
+      srcRow('社媒声量', TS.socialIndex, TS.thresholds.social, TS.bands.social)+
+      srcRow('热搜热度', TS.hotIndex, TS.thresholds.hotsearch, TS.bands.hotsearch)+
+      '<div class="x-quad" style="border-color:'+TS.quadrantColor+'">'+
+        '<div class="x-quad-lb" style="color:'+TS.quadrantColor+'">'+esc(TS.quadrantLabel)+'</div>'+
+        '<div class="x-quad-hint">'+esc(TS.quadrantHint)+'</div>'+
+      '</div>'+
+      '<div class="x-src-note">竖线为各源的高/低分界：检索可见度 '+TS.thresholds.visibility+
+        ' 分（对齐本报告「一般」评级线），社媒与热搜 '+TS.thresholds.social+
+        ' 分（声量活跃线）。三源量纲不同，仅作相对定位，不代表绝对市场份额。</div>'+
+      '</div>';
+
+    H+='<section class="reveal"'+REVEAL()+'>'+
+      '<div class="sec-head"><span class="sec-no">'+secNum()+'</span><h2 class="sec-title">多源交叉分析</h2>'+
+        '<span class="sec-note">检索 × 社媒 × 热搜 三源对齐</span></div>'+
+      '<div class="sec-rule"></div>'+
+      '<div class="x-grid">'+gCard+sCard+'</div>';
+
+    // ── 危机三通道 ──
+    var crColor = CR.score>=60?'var(--bad)':(CR.score>=30?'var(--warn)':'var(--good)');
+    var crh = '<div class="x-cr-hd">'+
+      '<span class="x-cr-score" style="color:'+crColor+'">'+CR.score+'</span>'+
+      '<span class="x-cr-lv" style="background:'+crColor+'18;color:'+crColor+'">'+esc(CR.levelLabel)+'</span>'+
+      '<span style="font-size:12px;color:var(--ink-4)">'+CR.triggeredCount+' / '+CR.channelsWithData+
+        ' 个有数据的通道触发（危机评分可信度 '+CR.confidence+'%）</span></div>';
+    CR.channels.forEach(function(ch){
+      var dot = !ch.hasData ? 'var(--ink-4)' : (ch.triggered ? 'var(--bad)' : 'var(--good)');
+      var fill = !ch.hasData ? 'var(--ink-4)' : (ch.triggered ? 'var(--bad)' : 'var(--good)');
+      crh+='<div class="x-cr">'+
+        '<span class="x-dot" style="background:'+dot+'"></span>'+
+        '<div class="x-cr-b">'+
+          '<div class="x-cr-t"><span class="x-cr-nm">'+esc(ch.name)+'</span>'+
+            '<span class="x-cr-i">强度 '+ch.intensity+'</span></div>'+
+          '<div class="x-cr-r">'+esc(ch.reason)+'</div>'+
+          (ch.hasData?'<div class="x-cr-track"><i class="x-cr-fill" style="width:'+ch.intensity+'%;background:'+fill+'"></i></div>':'')+
+        '</div></div>';
+    });
+    H+='<div class="card" style="margin-top:22px">'+
+      '<div class="x-lab">危机三通道 · 任一通道亮红灯即预警</div>'+crh+'</div>';
+
+    // ── 社媒真实样本（标题必须可点击，便于逐条核查）──
+    var SOC = S.SOCIAL;
+    if(SOC && Array.isArray(SOC.posts) && SOC.posts.length){
+      var pr='';
+      SOC.posts.forEach(function(p){
+        var sc = p.sentiment==='negative'?'var(--bad)':(p.sentiment==='positive'?'var(--good)':'var(--ink-3)');
+        var sl = p.sentiment==='negative'?'负面':(p.sentiment==='positive'?'正面':'中性');
+        pr+='<tr class="dim-row"><td>'+esc(p.platform||'')+'</td>'+
+          '<td>'+(p.url?'<a href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.title)+'</a>':esc(p.title))+'</td>'+
+          '<td style="color:'+sc+'">'+sl+'</td>'+
+          '<td class="r">'+(p.engagement?p.engagement.toLocaleString():'—')+'</td></tr>';
+      });
+      var platNote = (SOC.platforms||[]).map(function(pp){
+        return esc(pp.platform)+' '+pp.itemCount+' 条';
+      }).join(' · ');
+      H+='<details class="sim" style="margin-top:22px"><summary>展开社媒真实样本（'+SOC.posts.length+' 条，标题可点击查看原帖）</summary>'+
+        '<div class="sim-body">'+
+        (platNote?'<div class="x-src-note" style="margin-bottom:12px">平台分布：'+platNote+
+          (SOC.windowDays?' · 采集窗口 '+SOC.windowDays+' 天':'')+'</div>':'')+
+        '<table><thead><tr><th>平台</th><th>标题（可点击）</th><th>情绪</th><th class="r">互动量</th></tr></thead>'+
+        '<tbody>'+pr+'</tbody></table></div></details>';
+    }
+
+    // ── 竞品多维并集 ──
+    var CU = X.competitorUnion||[];
+    if(CU.length){
+      var cr='';
+      CU.forEach(function(x){
+        cr+='<tr class="dim-row"><td>'+esc(x.name)+'</td>'+
+          '<td class="r">'+(x.searchShare===null?'—':pct(x.searchShare))+'</td>'+
+          '<td class="r">'+(x.socialMentions===null?'—':x.socialMentions)+'</td>'+
+          '<td class="r">'+(x.onHotsearch?'是':'否')+'</td>'+
+          '<td>'+esc(x.sources.join(' · '))+'</td></tr>';
+      });
+      H+='<details class="sim" style="margin-top:22px"><summary>展开竞品多维并集（'+CU.length+' 个）</summary>'+
+        '<div class="sim-body">'+
+        '<div class="x-src-note" style="margin-bottom:12px">合并「检索声量榜」与「社媒讨论」中出现的竞品。'+
+          '「覆盖源」越多，说明该竞品在越多场景下与你正面竞争。</div>'+
+        '<table><thead><tr><th>竞品</th><th class="r">检索声量</th><th class="r">社媒提及</th>'+
+        '<th class="r">上热搜</th><th>覆盖源</th></tr></thead><tbody>'+cr+'</tbody></table>'+
+        '</div></details>';
+    }
+
+    H+='</section>';
+  }
 }
 
 /* ══════ 优化后预期 ══════ */
