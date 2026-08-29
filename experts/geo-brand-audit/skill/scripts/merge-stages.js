@@ -26,7 +26,7 @@ var path = require('path');
 var S = require('./lib/schema.js');
 var BM = require('./lib/benchmark.js');
 
-var VERSION = '1.1.0';
+var VERSION = '1.2.0';
 
 // ── 参数 ──
 var args = process.argv.slice(2);
