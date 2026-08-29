@@ -75,7 +75,8 @@ var allOk = true;
 if (mode === 'file') {
   var obj = readJson(target);
   // 单文件可能是 { PROFILE: {...}, COMPETITORS: {...} } 形式
-  var keys = Object.keys(obj);
+  // 约定：下划线开头的顶层键（如 _note）为元数据/注释，不参与 stage 识别
+  var keys = Object.keys(obj).filter(function (k) { return k.indexOf('_') !== 0; });
   var isStageMap = keys.length > 0 && keys.every(function (k) { return S.ALL_STAGE_CODES.indexOf(k) >= 0; });
   if (!isStageMap) {
     die('无法识别为 stage 文件：顶层 key 应为 stageCode（如 PROFILE / ASSET / SCORE）。\n' +
