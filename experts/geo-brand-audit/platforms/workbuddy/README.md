@@ -9,6 +9,7 @@
 
 ## 核心能力
 
+- **报告风格 v1.2**：瑞士国际主义网格（Swiss Grid）—— 纯白底 + Helvetica 无衬线 + 品牌橙为唯一强调色 + 12 栏网格底纹 + 发丝线分隔 + 无圆角无阴影
 - **证据驱动**：每分标注 L1 已验证 / L2 检索命中 / L3 推演估计，并给出证据覆盖率
 - **六维评分**：RETRIEVABILITY 25% / AUTHORITY 20% / CONTENT_ASSETS 15% / STRUCTURE_MARKUP 15% / SENTIMENT 15% / COMPETITIVE 10%
 - **分档采集**：quick / standard / deep
