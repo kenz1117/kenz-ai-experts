@@ -26,7 +26,7 @@ var path = require('path');
 var S = require('./lib/schema.js');
 var BM = require('./lib/benchmark.js');
 
-var VERSION = '1.0.0';
+var VERSION = '1.1.0';
 
 // ── 参数 ──
 var args = process.argv.slice(2);
@@ -252,6 +252,23 @@ report.waterfall = S.computeWaterfall(
   (stages.SCORE && stages.SCORE.industryBenchmark !== undefined) ? stages.SCORE.industryBenchmark : null
 );
 report.priorities = S.prioritizeActions(stages.ACTION && stages.ACTION.actions);
+
+// ── 多源交叉分析层（可选阶段5：SOCIAL / HOTSEARCH）──
+// 阶段5 缺失时不做任何估算，只标记 available:false，报告中显示「未采集」。
+var CA = require('./lib/cross_analysis.js');
+var cross = CA.crossAnalyze(report);
+report.cross = cross;
+
+if (cross.available) {
+  var g = cross.narrativeGap;
+  console.log('交叉分析: 叙事鸿沟 ' +
+    (g.gap === null ? '—（数据不足）' : (g.gap > 0 ? '+' : '') + g.gap + ' ' + g.verdictLabel) +
+    ' · 三源 ' + cross.threeSource.quadrantLabel +
+    ' · 危机 ' + cross.crisis.score + '（' + cross.crisis.levelLabel + '）' +
+    ' · 竞品并集 ' + cross.competitorUnion.length + ' 个');
+} else {
+  console.log('交叉分析: 未采集阶段5（SOCIAL / HOTSEARCH），跳过（不做估算）');
+}
 
 // ── OVERVIEW 兜底 ──
 if (!stages.OVERVIEW) {
