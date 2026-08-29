@@ -2,7 +2,7 @@
 name: geo-brand-audit
 description: "品牌 GEO 可见度审计（证据驱动）。用可核查的公开证据诊断品牌在 AI 搜索时代的可见度，六维评分 + 证据分级 L1/L2/L3 + 分档采集(quick/standard/deep) + 竞品检索共现涌现，产出 HTML 汇报版与 Markdown 执行版，支持基线对比出 delta。Triggers: 'GEO审计', 'GEO诊断', '品牌GEO', 'AI可见度', 'AI搜索可见度', '品牌可见度审计', 'AI搜索排名', 'GEO优化', '品牌曝光诊断', 'AI推荐位', 'brand visibility audit', 'GEO audit'."
 description_zh: "品牌 GEO 可见度审计。证据驱动、六维评分、HTML+Markdown 双输出、支持优化前后对比"
-version: 1.1.0
+version: 1.2.0
 author: KenZ
 homepage: https://github.com/kenz1117
 display_name: "品牌GEO可见度审计"
@@ -14,6 +14,8 @@ metadata:
 ---
 
 # 品牌 GEO 可见度审计
+
+> **报告风格 v1.2**：瑞士国际主义网格（Swiss Grid）—— 纯白底 + Helvetica 无衬线 + 品牌橙为唯一强调色 + 12 栏网格底纹 + 发丝线分隔 + 无圆角无阴影。像顶级战略咨询公司的交付物。
 
 用**可核查的公开证据**诊断品牌在 AI 搜索时代的可见度，产出能落地的优化清单。
 
