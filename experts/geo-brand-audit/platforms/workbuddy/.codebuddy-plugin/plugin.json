@@ -1,7 +1,7 @@
 {
   "name": "geo-brand-audit",
-  "version": "1.0.0",
-  "description": "Evidence-driven brand GEO visibility audit: six-dimension scoring, evidence grading L1-L3, competitor co-occurrence, HTML report + Markdown execution plan.",
+  "version": "1.1.0",
+  "description": "Evidence-driven brand GEO visibility audit: six-dimension scoring, evidence grading L1-L3, competitor co-occurrence, optional multi-source cross-analysis (social + hot search), HTML report + Markdown execution plan.",
   "author": {
     "name": "KenZ"
   },
