@@ -63,12 +63,23 @@ var STAGE_FILES = [
   { n: 1, file: 'stage1.json', title: '定范围',   codes: ['PROFILE', 'COMPETITORS'], parallelWith: [] },
   { n: 2, file: 'stage2.json', title: '采资产',   codes: ['ASSET', 'STRUCTURE', 'AUTHORITY'], parallelWith: [3] },
   { n: 3, file: 'stage3.json', title: '测可见+扫舆情', codes: ['VISIBILITY', 'COMPETITIVE', 'SENTIMENT'], parallelWith: [2] },
-  { n: 4, file: 'stage4.json', title: '评分与行动', codes: ['OVERVIEW', 'SCORE', 'ACTION', 'SIMULATION'], parallelWith: [] }
+  { n: 4, file: 'stage4.json', title: '评分与行动', codes: ['OVERVIEW', 'SCORE', 'ACTION', 'SIMULATION'], parallelWith: [] },
+  // 阶段5 — 可选增强：多源真实信号（社媒舆情 + 热搜）。
+  // 缺失不阻断主流水线：六维评分与行动清单不依赖它，
+  // 它只驱动「交叉分析层」（叙事鸿沟 / 三源矩阵 / 危机通道）。
+  { n: 5, file: 'stage5.json', title: '多源信号（可选）', codes: ['SOCIAL', 'HOTSEARCH'], parallelWith: [], optional: true }
 ];
 
 var ALL_STAGE_CODES = STAGE_FILES.reduce(function (acc, s) {
   return acc.concat(s.codes);
 }, []);
+
+// 可选阶段：缺失不算错。新增数据源一律先标可选，避免破坏既有审计报告。
+var OPTIONAL_STAGE_CODES = ['SIMULATION', 'SOCIAL', 'HOTSEARCH'];
+
+var REQUIRED_STAGE_CODES = ALL_STAGE_CODES.filter(function (c) {
+  return OPTIONAL_STAGE_CODES.indexOf(c) < 0;
+});
 
 // ─────────────────────────────────────────────────────────────
 // 工具函数
@@ -269,6 +280,58 @@ var STAGE_RULES = {
     { path: 'platforms.*.platform', type: 'string', required: false },
     { path: 'platforms.*.range', type: 'array', required: false, hint: '[下限, 上限]，0-1' },
     { path: 'platforms.*.confidence', type: 'enum(high|medium|low)', required: false }
+  ],
+
+  // ── 阶段5（可选）：真实社媒信号 ──
+  // 铁律：每条帖子必须有 url（可点击、可核查）。无 url 的帖子不得进入样本，
+  // 宁可少几条也不能掺入无法追溯的内容 —— 这正是与「AI 模拟舆情」的分界线。
+  SOCIAL: [
+    { path: 'platforms', type: 'array', required: true, hint: '已采集的平台清单（xhs/dy/gzh/wb/bilibili/zhihu…）' },
+    { path: 'platforms.*.platform', type: 'string', required: true },
+    { path: 'platforms.*.itemCount', type: 'number', required: true, hint: '该平台实际取到的样本条数' },
+    { path: 'platforms.*.engagement', type: 'number', required: false, hint: '该平台样本总互动量（赞+藏+评+转）' },
+    { path: 'platforms.*.evidence', type: 'evidence', required: true },
+    { path: 'posts', type: 'array', required: true, hint: '真实帖子样本，每条须带可点击 url' },
+    { path: 'posts.*.platform', type: 'string', required: true },
+    { path: 'posts.*.title', type: 'string', required: true },
+    { path: 'posts.*.url', type: 'string', required: true, hint: '原始帖子链接，报告须可点击' },
+    { path: 'posts.*.sentiment', type: 'enum(positive|neutral|negative)', required: true },
+    { path: 'posts.*.engagement', type: 'number', required: false },
+    { path: 'posts.*.publishedAt', type: 'string', required: false },
+    { path: 'posts.*.evidence', type: 'evidence', required: true },
+    { path: 'distribution.positive', type: 'number', required: true, hint: '0-100，与 neutral+negative 合计 100' },
+    { path: 'distribution.neutral', type: 'number', required: true },
+    { path: 'distribution.negative', type: 'number', required: true },
+    { path: 'negativeRate', type: 'number', required: true, hint: '0-1' },
+    { path: 'topTopics', type: 'array', required: false, hint: '高频议题，用于反哺检索词' },
+    { path: 'topTopics.*.topic', type: 'string', required: false },
+    { path: 'topTopics.*.count', type: 'number', required: false },
+    { path: 'topTopics.*.sentiment', type: 'enum(positive|neutral|negative)', required: false },
+    { path: 'competitorsMentioned', type: 'array', required: false, hint: '社媒讨论中共现的竞品' },
+    { path: 'competitorsMentioned.*.name', type: 'string', required: false },
+    { path: 'competitorsMentioned.*.mentions', type: 'number', required: false },
+    { path: 'windowDays', type: 'number', required: false, hint: '采集时间窗（默认 30 天）' },
+    { path: 'evidenceCoverage', type: 'coverage', required: true },
+    { path: 'note', type: 'string', required: false, hint: '采集受限说明（如平台不可达）' }
+  ],
+
+  // ── 阶段5（可选）：真实热搜信号 ──
+  HOTSEARCH: [
+    { path: 'items', type: 'array', required: true, hint: '真实热搜条目（品牌词命中与品类环境）' },
+    { path: 'items.*.platform', type: 'string', required: true, hint: 'wb/dy/baidu/zhihu/bilibili/ks/toutiao' },
+    { path: 'items.*.title', type: 'string', required: true },
+    { path: 'items.*.url', type: 'string', required: false },
+    { path: 'items.*.heat', type: 'number', required: false, hint: '平台热度值（原样记录，不做跨台归一化）' },
+    { path: 'items.*.brandHit', type: 'boolean', required: true, hint: '该条目是否命中本品牌' },
+    { path: 'items.*.sentiment', type: 'enum(positive|neutral|negative)', required: false },
+    { path: 'items.*.evidence', type: 'evidence', required: true },
+    { path: 'brandOnList', type: 'boolean', required: true, hint: '品牌词是否上榜' },
+    { path: 'maxBrandHeat', type: 'number', required: false, hint: '品牌相关条目中的最高热度' },
+    { path: 'categoryHeat', type: 'number', required: false, hint: '品类环境热度（用于判断品类升温/降温）' },
+    { path: 'negativeAssociation', type: 'boolean', required: false, hint: '上榜条目是否关联负面' },
+    { path: 'windowDays', type: 'number', required: false },
+    { path: 'evidenceCoverage', type: 'coverage', required: true },
+    { path: 'note', type: 'string', required: false }
   ]
 };
 
@@ -471,8 +534,8 @@ function validateReport(report) {
     return { errors: [{ path: 'stages', msg: '缺少 stages' }], warnings: [] };
   }
 
-  ALL_STAGE_CODES.forEach(function (code) {
-    if (code === 'SIMULATION') return; // 可关
+  // 只校验必填阶段。SIMULATION / SOCIAL / HOTSEARCH 为可选增强，缺失不报错。
+  REQUIRED_STAGE_CODES.forEach(function (code) {
     if (!report.stages[code]) {
       errors.push({ path: 'stages.' + code, msg: '缺少 stage' });
     }
@@ -564,6 +627,51 @@ function validateReport(report) {
     var s = Number(sen.distribution.positive) + Number(sen.distribution.neutral) + Number(sen.distribution.negative);
     if (Math.abs(s - 100) > 1) {
       errors.push({ path: 'stages.SENTIMENT.distribution', msg: 'positive+neutral+negative 应等于 100，当前 ' + s });
+    }
+  }
+
+  // SOCIAL 分布合计 + 样本可追溯性（可选阶段，仅在存在时校验）
+  var soc = report.stages && report.stages.SOCIAL;
+  if (soc) {
+    if (soc.distribution) {
+      var sd = Number(soc.distribution.positive) + Number(soc.distribution.neutral) + Number(soc.distribution.negative);
+      if (Math.abs(sd - 100) > 1) {
+        errors.push({ path: 'stages.SOCIAL.distribution', msg: 'positive+neutral+negative 应等于 100，当前 ' + sd });
+      }
+    }
+    if (Array.isArray(soc.posts) && soc.posts.length) {
+      var noUrl = soc.posts.filter(function (p) { return !p || !p.url; }).length;
+      // 无 url 的样本无法核查，等同于编造 —— 直接报错而非警告
+      if (noUrl > 0) {
+        errors.push({
+          path: 'stages.SOCIAL.posts',
+          msg: noUrl + '/' + soc.posts.length + ' 条样本缺少 url。社媒样本必须可点击溯源，无 url 请删除该条而不是留空'
+        });
+      }
+      // 覆盖平台数：仅 1 个平台时提醒（铁律：多平台覆盖，单平台结论偏颇）
+      var plats = {};
+      soc.posts.forEach(function (p) { if (p && p.platform) plats[p.platform] = 1; });
+      var pn = Object.keys(plats).length;
+      if (pn === 1) {
+        warnings.push({ path: 'stages.SOCIAL.posts', msg: '样本仅覆盖 1 个平台，跨平台对比结论可能偏颇，建议补全' });
+      }
+    }
+  }
+
+  // HOTSEARCH 一致性（可选阶段）
+  var hot = report.stages && report.stages.HOTSEARCH;
+  if (hot) {
+    if (Array.isArray(hot.items)) {
+      var hits = hot.items.filter(function (i) { return i && i.brandHit; }).length;
+      if (hot.brandOnList !== (hits > 0)) {
+        warnings.push({
+          path: 'stages.HOTSEARCH.brandOnList',
+          msg: 'brandOnList=' + hot.brandOnList + '，但 items 中 brandHit=true 的有 ' + hits + ' 条，两者应一致'
+        });
+      }
+    }
+    if (hot.brandOnList && typeof hot.maxBrandHeat !== 'number') {
+      warnings.push({ path: 'stages.HOTSEARCH.maxBrandHeat', msg: '品牌已上榜但缺 maxBrandHeat，热搜指数将退化为定性判断' });
     }
   }
 
@@ -677,6 +785,8 @@ module.exports = {
   DEPTHS: DEPTHS,
   STAGE_FILES: STAGE_FILES,
   ALL_STAGE_CODES: ALL_STAGE_CODES,
+  OPTIONAL_STAGE_CODES: OPTIONAL_STAGE_CODES,
+  REQUIRED_STAGE_CODES: REQUIRED_STAGE_CODES,
   STAGE_RULES: STAGE_RULES,
   levelOf: levelOf,
   dimensionByCode: dimensionByCode,
