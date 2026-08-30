@@ -1,0 +1,2020 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-08-29T00:00:00.000Z",
+  "meta": {
+    "brand": "示例海洋馆",
+    "category": "海洋主题公园",
+    "website": "https://example.com/",
+    "depth": "standard",
+    "depthLabel": "标准诊断",
+    "stagesCompleted": [
+      "PROFILE",
+      "COMPETITORS",
+      "ASSET",
+      "STRUCTURE",
+      "AUTHORITY",
+      "VISIBILITY",
+      "COMPETITIVE",
+      "SENTIMENT",
+      "OVERVIEW",
+      "SCORE",
+      "ACTION",
+      "SIMULATION",
+      "SOCIAL",
+      "HOTSEARCH"
+    ],
+    "stagesMissing": [],
+    "filledDimensions": []
+  },
+  "stages": {
+    "PROFILE": {
+      "brand": "示例海洋馆",
+      "category": "海洋主题公园",
+      "website": "https://example.com/",
+      "summary": "位于大连星海广场西侧的国家 AAAA 级海洋主题乐园，1995 年营业，以 118 米海底通道和国家级南极企鹅种源繁育基地为核心卖点，隶属上市公司示例海洋馆旅游控股股份有限公司。",
+      "queryMatrix": [
+        {
+          "intent": "选购推荐",
+          "queries": [
+            "大连 海洋馆 推荐 哪个好",
+            "大连 亲子游 去哪玩",
+            "大连 下雨天 室内景点 推荐"
+          ]
+        },
+        {
+          "intent": "品牌评测",
+          "queries": [
+            "示例海洋馆 怎么样",
+            "示例海洋馆 值得去吗"
+          ]
+        },
+        {
+          "intent": "竞品对比",
+          "queries": [
+            "示例海洋馆和对照竞品馆 哪个好",
+            "大连 海洋馆 示例海洋馆还是对照竞品馆"
+          ]
+        },
+        {
+          "intent": "票务实用",
+          "queries": [
+            "大连 海洋馆 门票 多少钱",
+            "大连 景点 联票 哪个划算"
+          ]
+        },
+        {
+          "intent": "交通周边",
+          "queries": [
+            "示例海洋馆 怎么去 地铁"
+          ]
+        },
+        {
+          "intent": "痛点避坑",
+          "queries": [
+            "大连海洋馆 哪个不踩坑",
+            "大连 带娃 去哪玩 不累"
+          ]
+        }
+      ]
+    },
+    "COMPETITORS": {
+      "method": "以 3 组品类通用词做检索（「大连 海洋馆 推荐 哪个好」「大连 必去景点 排行榜 推荐 2026」「示例海洋馆 官网 介绍」），统计真实结果正文中的共现品牌频次取 Top5。星海广场、星海公园虽高频共现，但属免费公共空间且与本品牌同址，商业模型不同，不计入竞品集。",
+      "list": [
+        {
+          "name": "对照竞品馆",
+          "origin": "cooccurrence",
+          "cooccurCount": 12,
+          "threatLevel": "high"
+        },
+        {
+          "name": "大连森林动物园",
+          "origin": "cooccurrence",
+          "cooccurCount": 6,
+          "threatLevel": "high"
+        },
+        {
+          "name": "大连海昌发现王国主题公园",
+          "origin": "cooccurrence",
+          "cooccurCount": 4,
+          "threatLevel": "medium"
+        },
+        {
+          "name": "大连海昌东方水城",
+          "origin": "cooccurrence",
+          "cooccurCount": 3,
+          "threatLevel": "medium"
+        },
+        {
+          "name": "金石滩国家旅游度假区",
+          "origin": "cooccurrence",
+          "cooccurCount": 3,
+          "threatLevel": "low"
+        }
+      ],
+      "evidence": {
+        "level": "L2",
+        "sources": [
+          {
+            "url": "https://example.com/html5/you/cranking/sight/dalian4/100001412799.html",
+            "title": "大连必打卡景点榜（携程攻略）",
+            "snippet": "对照竞品馆 5A 排第 2、大连森林动物园 4A 第 3、示例海洋馆 4A 第 4"
+          },
+          {
+            "url": "https://example.com/2026-08-28/detail-inipwnxp4445142.d.html",
+            "title": "大连海洋动物园推荐：示例海洋馆vs对照竞品馆，带娃家庭闭眼选？3个维度说清+FAQ",
+            "snippet": "大连两大海洋公园——对照竞品馆与示例海洋馆，各有千秋"
+          },
+          {
+            "url": "https://example.com/article/7664110684766847494",
+            "title": "攻略｜盘点来大连必打卡的核心经典景区（一）",
+            "snippet": "大连对照竞品馆 / 大连森林动物园 / 示例海洋馆 / 大连海昌发现王国主题公园"
+          }
+        ]
+      }
+    },
+    "ASSET": {
+      "officialSite": {
+        "exists": true,
+        "url": "https://example.com/",
+        "score": 10,
+        "summary": "官网域名存在且被百科与省科协科普平台列为本品牌官方网址，但当前对公网不可达：http 与 https 各形态均返回 HTTP 502，www.sample-brand.example 的 DNS 查询返回 NXDOMAIN，https 连接直接失败。对照组（百度 200、携程 200、马蜂窝 202）与竞品对照竞品馆官网（https://example.com 200）均正常，已排除本地网络因素。对 AI 抓取与引用而言，不可达官网等同于零自有内容资产。"
+      },
+      "coverage": [
+        {
+          "type": "场馆/产品页",
+          "count": 5,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/travel-guide/attraction/dalian/dalian-sample-brand-ocean-world-79168/",
+                "title": "示例海洋馆（Trip.com 景点页）",
+                "snippet": "目前在营项目共有海洋世界、极地世界、珊瑚世界、银河星海、厉害塔等五大场馆"
+              }
+            ],
+            "note": "五大场馆数量由第三方平台描述确认；因官网不可达，无法核实官方自有页面"
+          }
+        },
+        {
+          "type": "FAQ / 帮助中心",
+          "count": 0,
+          "evidence": {
+            "level": "L3",
+            "note": "官网不可达无法核实自有 FAQ；同时未在任何第三方权威页面检索到官方 FAQ 栏目的引用。记为无，非实测确认"
+          }
+        },
+        {
+          "type": "参数/票价页",
+          "count": 0,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/scenery_2/#/pages/list/list?cityId=248&keyword=%E5%9C%A3%E4%BA%9A%E6%B5%B7%E6%B4%8B%E4%B8%96%E7%95%8C",
+                "title": "同程 示例海洋馆票务页",
+                "snippet": "四馆/五馆票价、学生票、亲子票等 30 余种票型，全部由 OTA 承载"
+              }
+            ],
+            "note": "票价与票种信息完整，但全部托管在携程/同程/Trip 等 OTA 平台，品牌自有站点无对应页面"
+          }
+        },
+        {
+          "type": "评测/案例内容",
+          "count": 0,
+          "evidence": {
+            "level": "L3",
+            "note": "官网不可达无法核实；未检索到官方发布的评测或游客案例内容"
+          }
+        },
+        {
+          "type": "博客/长文/科普内容",
+          "count": 0,
+          "evidence": {
+            "level": "L3",
+            "note": "科普内容以省科协「科普辽宁」转载形式存在，非品牌自有站点承载；官网不可达无法核实自有博客"
+          }
+        }
+      ],
+      "freshness": {
+        "note": "官网不可达，无法评估自有内容更新频率。第三方信息显示：2021 年珊瑚世界改造升级、2024 年银河星海新增水豚与浣熊 —— 说明实体项目在迭代，但迭代未沉淀为可被引用的线上内容。"
+      },
+      "evidenceCoverage": {
+        "L1": 0,
+        "L2": 0.4,
+        "L3": 0.6
+      }
+    },
+    "STRUCTURE": {
+      "checks": [
+        {
+          "item": "JSON-LD 结构化数据（Product / FAQPage / Organization）",
+          "pass": false,
+          "evidence": {
+            "level": "L3",
+            "note": "官网不可达（502 + DNS NXDOMAIN），无法抓取原始 HTML 检测。此处记为未通过系推断，非实测"
+          }
+        },
+        {
+          "item": "表格化参数（HTML table 呈现票价/参数）",
+          "pass": false,
+          "evidence": {
+            "level": "L3",
+            "note": "官网不可达无法检测。票价表格全部存在于 OTA 平台而非品牌自有站点"
+          }
+        },
+        {
+          "item": "QA 问答区块",
+          "pass": false,
+          "evidence": {
+            "level": "L3",
+            "note": "官网不可达无法检测"
+          }
+        },
+        {
+          "item": "语义化标题层级（H1-H3）",
+          "pass": false,
+          "evidence": {
+            "level": "L3",
+            "note": "官网不可达无法检测"
+          }
+        },
+        {
+          "item": "meta description / OG 标签",
+          "pass": false,
+          "evidence": {
+            "level": "L3",
+            "note": "官网不可达无法检测"
+          }
+        },
+        {
+          "item": "明确的结论性段落（可被 AI 摘录）",
+          "pass": false,
+          "evidence": {
+            "level": "L3",
+            "note": "官网不可达无法检测"
+          }
+        }
+      ],
+      "fetchNote": "【重要】官网 sample-brand.example 各协议形态（http/https、带 www/不带 www、/index.html）全部返回 HTTP 502 或连接失败，www.sample-brand.example 的 DNS 查询返回 NXDOMAIN。已用对照组排除本地网络因素：百度 200、携程 200、马蜂窝 202、竞品对照竞品馆官网 https://example.com 200。结论：品牌官网当前对公网不可达，六项结构化检测全部无法执行，按规则降级为 L3。不排除地域限制或临时故障的可能，建议在品牌侧网络环境复验。竞品对照竞品馆官网实测：HTTP 200、15.5KB、含 <Title> 与 <meta name=\"Description\">、4 个 <table>、h1/h2 各 1，但无 JSON-LD、无 OG 标签、无 viewport 移动端适配。",
+      "evidenceCoverage": {
+        "L1": 0,
+        "L2": 0,
+        "L3": 1
+      }
+    },
+    "AUTHORITY": {
+      "items": [
+        {
+          "source": "携程",
+          "title": "大连必打卡景点榜（示例海洋馆排第 4，评级 4A）",
+          "url": "https://example.com/html5/you/cranking/sight/dalian4/100001412799.html",
+          "tier": "ranking",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/html5/you/cranking/sight/dalian4/100001412799.html"
+              }
+            ],
+            "note": "榜单第 4 位，落后于对照竞品馆（5A，第 2）、大连森林动物园（4A，第 3）"
+          }
+        },
+        {
+          "source": "新浪旅游",
+          "title": "大连海洋动物园推荐：示例海洋馆vs对照竞品馆，带娃家庭闭眼选？3个维度说清+FAQ",
+          "url": "https://example.com/2026-08-28/detail-inipwnxp4445142.d.html",
+          "tier": "media",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/2026-08-28/detail-inipwnxp4445142.d.html"
+              }
+            ]
+          }
+        },
+        {
+          "source": "辽宁文旅（今日头条）",
+          "title": "攻略｜盘点来大连必打卡的核心经典景区（一）",
+          "url": "https://example.com/article/7664110684766847494",
+          "tier": "media",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/article/7664110684766847494"
+              }
+            ]
+          }
+        },
+        {
+          "source": "科普辽宁（辽宁省科协）",
+          "title": "科普教育基地风采——示例海洋馆",
+          "url": null,
+          "tier": "ranking",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/poi/9362-3-6.html",
+                "title": "马蜂窝 POI 页（转载该科普介绍）"
+              }
+            ],
+            "note": "省科协科普教育基地名录收录，并列出官网网址 https://example.com/；原发布页无稳定 URL，以转载页为证"
+          }
+        },
+        {
+          "source": "首都师范大学学报（自然科学版）",
+          "title": "基于网络文本分析的示例海洋馆游客满意度研究",
+          "url": "https://example.com/english/docs/2023-06/A7A902589C38C8A36FAB0B65A0D_DD80EA53_132337.pdf",
+          "tier": "media",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/english/docs/2023-06/A7A902589C38C8A36FAB0B65A0D_DD80EA53_132337.pdf"
+              }
+            ],
+            "note": "学术论文，系统分析了示例海洋馆的负面评论与经营管理问题"
+          }
+        },
+        {
+          "source": "Trip.com（携程国际站）",
+          "title": "示例海洋馆景点页 · 1.9 万条评价 4.4/5",
+          "url": "https://example.com/travel-guide/attraction/dalian/dalian-sample-brand-ocean-world-79168/",
+          "tier": "media",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/travel-guide/attraction/dalian/dalian-sample-brand-ocean-world-79168/"
+              }
+            ],
+            "note": "正面评价 6728 条、负面评价 446 条，负面占比约 6.2%"
+          }
+        },
+        {
+          "source": "马蜂窝",
+          "title": "示例海洋馆 POI 页",
+          "url": "https://example.com/poi/9362-3-6.html",
+          "tier": "community",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/poi/9362-3-6.html"
+              }
+            ]
+          }
+        }
+      ],
+      "evidenceCoverage": {
+        "L1": 0,
+        "L2": 1,
+        "L3": 0
+      }
+    },
+    "VISIBILITY": {
+      "summary": {
+        "totalQueries": 7,
+        "hitCount": 6,
+        "hitRate": 0.857,
+        "brandedHitRate": 1,
+        "genericHitRate": 0.667,
+        "note": "含品牌词的查询 4 条全部命中且排名靠前；无品牌词的品类通用查询 3 条中命中 2 条——唯一失手的是「大连 下雨天 室内景点 推荐」，而该查询恰恰对应示例海洋馆最强的差异化卖点（五大场馆全室内、不怕雨）。竞品对照竞品馆（以户外为主的综合园区）在该查询中被推荐，示例海洋馆缺席。"
+      },
+      "queryResults": [
+        {
+          "query": "大连 海洋馆 推荐 哪个好",
+          "brandAppeared": true,
+          "bestRank": 1,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/webapp/tnt/list?keyword=%E6%B5%B7%E6%B4%8B%E9%A6%86",
+                "title": "携程 大连海洋馆搜索结果",
+                "snippet": "示例海洋馆列于结果首位，评分 4.5，票价起 188 元"
+              }
+            ]
+          }
+        },
+        {
+          "query": "大连 亲子游 去哪玩 推荐",
+          "brandAppeared": true,
+          "bestRank": 2,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/scenery_2/#/pages/list/list?cityId=248",
+                "title": "同程 大连景点列表",
+                "snippet": "示例海洋馆列第 2，评分 4.7，标注「亲子」标签"
+              }
+            ],
+            "note": "同时在小红书式遛娃清单中位列第 3，描述为「室内海洋馆不怕晒、阴雨天遛娃首选」"
+          }
+        },
+        {
+          "query": "大连 下雨天 室内景点 推荐",
+          "brandAppeared": false,
+          "bestRank": null,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/2026-07-18/detail-iniiemqp8267564.d.html",
+                "title": "2026年7-8月去大连避暑，有哪些适合雨季的室内玩法？（新浪旅游）",
+                "snippet": "室内玩法清单含对照竞品馆「大型室内场馆可以避雨」，未出现示例海洋馆"
+              }
+            ],
+            "note": "示例海洋馆五大场馆全为室内，却未出现在「下雨天室内景点」这一高匹配查询中；同清单中对照竞品馆（以户外为主的综合园区）反而被推荐"
+          }
+        },
+        {
+          "query": "示例海洋馆 怎么样",
+          "brandAppeared": true,
+          "bestRank": 1,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/scenery_2/#/pages/list/list?cityId=248&keyword=%E5%9C%A3%E4%BA%9A%E6%B5%B7%E6%B4%8B%E4%B8%96%E7%95%8C",
+                "title": "同程 示例海洋馆",
+                "snippet": "评论评分 4.7，简介「四馆联票超值，海底隧道超长，白鲸海豚表演超精彩」"
+              }
+            ]
+          }
+        },
+        {
+          "query": "示例海洋馆 值得去吗",
+          "brandAppeared": true,
+          "bestRank": 1,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/sight/shanghai2/14893-dianping177802525.html",
+                "title": "携程 示例海洋馆点评",
+                "snippet": "「如果一次都没有去过海洋世界的话，示例海洋馆是很值得去的」"
+              }
+            ]
+          }
+        },
+        {
+          "query": "示例海洋馆和对照竞品馆 哪个好",
+          "brandAppeared": true,
+          "bestRank": 1,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/2026-08-28/detail-inipwnxp4445142.d.html",
+                "title": "大连海洋动物园推荐：示例海洋馆vs对照竞品馆，带娃家庭闭眼选？",
+                "snippet": "三维度深度对比：场馆特色、演出互动、票价性价比"
+              }
+            ]
+          }
+        },
+        {
+          "query": "大连 海洋馆 示例海洋馆还是对照竞品馆",
+          "brandAppeared": true,
+          "bestRank": 2,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/article/7664110684766847494",
+                "title": "攻略｜盘点来大连必打卡的核心经典景区（一）",
+                "snippet": "对照竞品馆与示例海洋馆并列介绍，对照竞品馆排在前"
+              }
+            ]
+          }
+        }
+      ],
+      "evidenceCoverage": {
+        "L1": 0,
+        "L2": 1,
+        "L3": 0
+      }
+    },
+    "COMPETITIVE": {
+      "brandRank": 2,
+      "shareOfVoice": [
+        {
+          "name": "对照竞品馆",
+          "mentions": 27,
+          "share": 0.307
+        },
+        {
+          "name": "示例海洋馆",
+          "mentions": 23,
+          "share": 0.261
+        },
+        {
+          "name": "大连森林动物园",
+          "mentions": 11,
+          "share": 0.125
+        },
+        {
+          "name": "星海广场",
+          "mentions": 5,
+          "share": 0.057
+        },
+        {
+          "name": "大连海昌发现王国主题公园",
+          "mentions": 4,
+          "share": 0.045
+        },
+        {
+          "name": "金石滩国家旅游度假区",
+          "mentions": 4,
+          "share": 0.045
+        },
+        {
+          "name": "大连海昌东方水城",
+          "mentions": 4,
+          "share": 0.045
+        },
+        {
+          "name": "棒棰岛",
+          "mentions": 4,
+          "share": 0.045
+        },
+        {
+          "name": "星海公园",
+          "mentions": 3,
+          "share": 0.034
+        },
+        {
+          "name": "大连狮虎园",
+          "mentions": 2,
+          "share": 0.023
+        },
+        {
+          "name": "海之韵公园",
+          "mentions": 1,
+          "share": 0.011
+        }
+      ],
+      "evidenceCoverage": {
+        "L1": 0,
+        "L2": 1,
+        "L3": 0
+      },
+      "dimensionBenchmarks": {
+        "method": "对头号竞品对照竞品馆做同口径实测：结构化维度用 curl 抓取官网原始 HTML 检测（大小写不敏感）；权威维度用携程必打卡榜排名 + 景区等级 + 官网可达性综合判定。仅测到 2 个维度，其余留空。",
+        "sampleSize": 1,
+        "dimensions": [
+          {
+            "code": "STRUCTURE_MARKUP",
+            "score": 50,
+            "evidence": {
+              "level": "L1",
+              "sources": [
+                {
+                  "url": "https://example.com",
+                  "title": "大连对照竞品馆官网"
+                }
+              ],
+              "fetchedAt": "2026-08-29T12:52:00+08:00",
+              "note": "curl 抓取原始 HTML：HTTP 200、15.5KB。含 <Title>、<meta name=\"Description\">、4 个 <table>、h1/h2 各 1，正文可见中文 257 字；无 application/ld+json、无 og: 标签、无 viewport 移动端适配。6 项检测通过 4 项（表格化参数、标题层级、meta 描述、结论性段落），未过 2 项（JSON-LD、OG 标签）"
+            }
+          },
+          {
+            "code": "AUTHORITY",
+            "score": 75,
+            "evidence": {
+              "level": "L2",
+              "sources": [
+                {
+                  "url": "https://example.com/html5/you/cranking/sight/dalian4/100001412799.html",
+                  "title": "携程 大连必打卡景点榜",
+                  "snippet": "对照竞品馆 5A 排第 2 位（示例海洋馆 4A 第 4 位）"
+                },
+                {
+                  "url": "https://example.com",
+                  "title": "对照竞品馆官网 HTTP 200（示例海洋馆官网 502）"
+                }
+              ],
+              "note": "国家 5A 级（高于示例海洋馆 4A）、榜单排名更前、官网可正常访问；第三方文章覆盖量与示例海洋馆相当"
+            }
+          }
+        ]
+      }
+    },
+    "SENTIMENT": {
+      "distribution": {
+        "positive": 60,
+        "neutral": 32,
+        "negative": 8
+      },
+      "negativeRate": 0.08,
+      "riskLevel": "low",
+      "trend": "stable",
+      "issues": [
+        {
+          "topic": "旺季排队与人流拥挤",
+          "severity": "high",
+          "detail": "多源复现：Trip.com 评论「节假日排队太吓人了」、悦享伴旅评论「整个过程都是在排队，人太多」、大众点评「只是觉得人挤人」。表演场馆限制入场人数，错过一场需再等 1 小时。",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/travel-guide/attraction/dalian/dalian-sample-brand-ocean-world-79168/",
+                "snippet": "整体還可以，很大，節假日排隊太嚇人了"
+              },
+              {
+                "url": "https://example.com/mudidi/sights/domestic-10722165.html",
+                "snippet": "實在是太累了，整個過程都是在排隊，人太多"
+              }
+            ]
+          }
+        },
+        {
+          "topic": "场馆与设施陈旧",
+          "severity": "medium",
+          "detail": "游客反馈「装修有点陈旧了」「海底隧道由于时间比较长了，光线非常暗，根本没法照相」「海底隧道的玻璃不透彻」。核心卖点（118 米海底隧道）的呈现质量被点名。",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/review/190537270",
+                "title": "大众点评 示例海洋馆",
+                "snippet": "海底隧道由于时间比较长了，光线非常暗，根本没法照相，玻璃不透彻"
+              }
+            ]
+          }
+        },
+        {
+          "topic": "性价比争议",
+          "severity": "medium",
+          "detail": "大众点评：「海洋馆面积不大，门票要 110 元，如果不是有动物表演可是真心不值这个价钱」。另有评论指出部分场馆「展品不多，可看的少」。",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/review/190537270",
+                "snippet": "面积不大，门票要110元，如果不是有动物表演可是真心不值这个价钱"
+              }
+            ]
+          }
+        },
+        {
+          "topic": "恐龙馆位置远且额外收费未充分告知",
+          "severity": "medium",
+          "detail": "首都师范大学学报论文指出：恐龙馆为对外合作项目，与其他 4 座场馆分离，乘坐景区交通工具需额外收费；部分购买联票的游客认为景区未提前说明场馆分布。「特效效果差」亦被点名。",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/english/docs/2023-06/A7A902589C38C8A36FAB0B65A0D_DD80EA53_132337.pdf",
+                "title": "首都师范大学学报：示例海洋馆游客满意度研究",
+                "snippet": "恐龙馆的评论数量最多，主要为「远、坐车花钱」；一些购买联票的游客认为景区未提前说明场馆分布"
+              }
+            ]
+          }
+        },
+        {
+          "topic": "配套设施与服务",
+          "severity": "low",
+          "detail": "Trip.com 评论指出：卫生间略少（女厕排队）、停车困难且停车场管理一般、珊瑚世界无婴儿车入口（需抬车）、服务一般。",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/travel-guide/attraction/dalian/dalian-sample-brand-ocean-world-79168/",
+                "snippet": "衛生間略少，女廁排大隊；停車最費勁，沒有位置；珊瑚世界沒有嬰兒車入口"
+              }
+            ]
+          }
+        }
+      ],
+      "evidenceCoverage": {
+        "L1": 0,
+        "L2": 1,
+        "L3": 0
+      }
+    },
+    "OVERVIEW": {
+      "score": 54,
+      "confidence": 55,
+      "summary": "示例海洋馆的线下资产相当扎实——国家 4A、五大场馆、118 米海底通道、国家级南极企鹅繁育基地、A 股上市公司背景，携程 4.5 / 同程 4.7 的口碑也属上乘。但这次审计发现了一个与线下实力严重不匹配的断层：品牌官网 sample-brand.example 全线不可达（http/https 各形态 502，www 子域 DNS 未解析），而同期竞品对照竞品馆官网正常返回 200。官网不可达直接导致三个连锁后果——品牌失去唯一可控的自有内容出口、票价与场馆信息全部托管在 OTA 平台、AI 没有任何来自品牌官方的可摘录事实源。更可惜的是，示例海洋馆五大场馆全为室内，这本是它在「下雨天去哪」这类高匹配查询中的绝对优势，但在实测中该查询推荐了以户外为主的竞品对照竞品馆，示例海洋馆缺席。品牌在线上的存在感，几乎完全依赖第三方平台施舍。",
+      "highlights": [
+        "线下资产扎实：国家 4A 级、五大场馆、118 米海底通道（中国第一座）、国家级南极企鹅种源繁育基地，A 股上市公司运营",
+        "口碑基本盘稳：携程 4.5、同程 4.7、Trip.com 4.4（1.9 万条评价，负面仅占约 6.2%）",
+        "品类通用词表现不弱：无品牌词查询命中率 66.7%，「大连 海洋馆 推荐」在携程结果中位列第 1",
+        "声量份额 26.1% 居品类第 2，与首名对照竞品馆（30.7%）差距不大"
+      ],
+      "risks": [
+        "官网 502 全线不可达，品牌失去唯一可控的自有内容出口（对照组与竞品官网均正常）",
+        "自有内容资产近乎为零：无 FAQ、无自有票价页、无博客，票价信息 100% 托管在 OTA",
+        "最强差异化卖点（全室内不怕雨）未进入对应查询，「大连 下雨天 室内景点」推荐了竞品",
+        "高 severity 负面议题（旺季排队拥挤）多源复现，但官方无任何内容承接与疏导"
+      ],
+      "executiveSummary": {
+        "headline": "官网全线 502 不可达，全室内这一最强卖点在「下雨天去哪」查询里反而缺席——示例海洋馆的线上存在感几乎全靠第三方平台施舍。",
+        "judgments": [
+          {
+            "text": "官网不可达是根因级问题，不是普通技术故障。http/https 各形态全部 502、www 子域 DNS 未解析，而同期百度、携程、马蜂窝与竞品对照竞品馆官网均正常——这不是网络波动，是品牌放弃了对自有内容出口的控制权，后果是 AI 完全没有官方事实源可引用。",
+            "evidence": {
+              "level": "L1",
+              "sources": [
+                {
+                  "url": "https://example.com/",
+                  "title": "示例海洋馆官网（实测 HTTP 502）"
+                }
+              ],
+              "fetchedAt": "2026-08-29T12:50:00+08:00",
+              "note": "对照组：百度 200、携程 200、马蜂窝 202、竞品 https://example.com 200"
+            }
+          },
+          {
+            "text": "自有内容资产近乎归零，所有产品事实都寄生在 OTA 上。五大场馆的介绍、30 余种票型、表演时刻表——这些本该由品牌自己定义和发布的内容，全部托管在携程/同程/Trip。AI 引用示例海洋馆时，引用的是平台的描述而不是品牌自己的说法，品牌丧失了叙事权。",
+            "evidence": {
+              "level": "L2",
+              "sources": [
+                {
+                  "url": "https://example.com/scenery_2/#/pages/list/list?cityId=248&keyword=%E5%9C%A3%E4%BA%9A%E6%B5%B7%E6%B4%8B%E4%B8%96%E7%95%8C",
+                  "title": "同程 示例海洋馆票务页",
+                  "snippet": "四馆/五馆、学生票、亲子票等 30 余种票型全部由 OTA 承载"
+                }
+              ]
+            }
+          },
+          {
+            "text": "最强的一张牌没打出去。示例海洋馆五大场馆全为室内，本应是「下雨天去哪」的天然答案；但实测该查询推荐了以户外为主的竞品对照竞品馆（其室内馆仅用于避雨），示例海洋馆直接缺席。实体优势没有转化成一个可被检索到的内容位置。",
+            "evidence": {
+              "level": "L2",
+              "sources": [
+                {
+                  "url": "https://example.com/2026-07-18/detail-iniiemqp8267564.d.html",
+                  "title": "2026年7-8月去大连避暑，有哪些适合雨季的室内玩法？",
+                  "snippet": "室内玩法清单含对照竞品馆，未出现示例海洋馆"
+                }
+              ]
+            }
+          }
+        ],
+        "biggestOpportunity": {
+          "text": "先把官网救回来，再把它做成品牌自己的事实中枢：上线五大场馆介绍页、HTML 表格化的票价体系、以及覆盖高频问题的 FAQ（含旺季分流指引），并补齐 JSON-LD / OG / 移动端适配。这是唯一能同时撬动结构化、内容资产、检索可见度三个维度的动作——因为这三个维度目前的低分，根子是同一件事。",
+          "expectedGain": 8,
+          "dimension": "STRUCTURE_MARKUP"
+        }
+      }
+    },
+    "SCORE": {
+      "totalScore": 54,
+      "commentary": "六维分化极其鲜明：舆情健康 78 分、竞争位势 70 分、检索可见度 68 分，说明品牌在第三方平台上的口碑与声量是达标的；但结构化 15 分、内容资产 25 分，几乎归零，原因是同一个——官网不可达。这不是六个独立问题，是一个根因的六种表现。也因此，修复动作的杠杆极高：官网一旦恢复并补齐结构化内容，三个低分维度会同时被拉动。",
+      "dimensions": [
+        {
+          "code": "RETRIEVABILITY",
+          "name": "检索可见度",
+          "weight": 0.25,
+          "score": 68,
+          "comment": "7 条实测查询命中 6 条（85.7%）。含品牌词查询 4 条全中且多居首位；无品牌词通用查询 3 条命中 2 条（66.7%），其中「大连 海洋馆 推荐 哪个好」在携程结果中位列第 1。唯一失手的是「大连 下雨天 室内景点 推荐」——恰恰是品牌最匹配该场景的一次机会。另需扣减：官网不可达使 AI 失去官方引用源。",
+          "evidenceCoverage": {
+            "L1": 0,
+            "L2": 1,
+            "L3": 0
+          },
+          "rootCause": {
+            "symptom": "无品牌词通用查询 3 条命中 2 条，唯一失手的「下雨天室内景点」恰是品牌最匹配的场景；官网不可达使 AI 无官方源可引。",
+            "directCause": "品牌的线上存在完全依托第三方平台的内容编排，自己没有可被引用的内容入口；同时「全室内」这一属性从未被结构化地表达在任何可被检索的页面上。",
+            "rootCause": "官网长期不可达（502 + DNS 未解析），导致品牌既没有内容出口，也无法通过结构化标记向 AI 声明自身属性（室内/票价/场馆），实体优势无法转化为检索可见度。",
+            "evidence": {
+              "level": "L1",
+              "sources": [
+                {
+                  "url": "https://example.com/",
+                  "title": "示例海洋馆官网（实测 HTTP 502）"
+                }
+              ],
+              "fetchedAt": "2026-08-29T12:50:00+08:00",
+              "note": "对照组与竞品官网均正常，已排除本地网络因素"
+            }
+          }
+        },
+        {
+          "code": "AUTHORITY",
+          "name": "权威与背书",
+          "weight": 0.2,
+          "score": 62,
+          "comment": "第三方覆盖数量不弱：携程必打卡榜、新浪旅游、辽宁文旅、省科协科普基地名录、首都师范大学学报论文、Trip.com、马蜂窝共 7 个可核查来源。但质量偏弱——携程榜仅排第 4，落后于对照竞品馆（5A，第 2）与森林动物园（4A，第 3）；景区等级 4A 低于竞品 5A；且官网不可达使背书无法回流到品牌自有资产。",
+          "evidenceCoverage": {
+            "L1": 0,
+            "L2": 1,
+            "L3": 0
+          },
+          "rootCause": {
+            "symptom": "第三方来源数量达 7 个，但携程必打卡榜仅列第 4，景区等级 4A 低于竞品对照竞品馆的 5A。",
+            "directCause": "背书全部停留在「被提及」层面，没有回流——因为没有可访问的自有站点去承接和展示这些资质，第三方背书无法沉淀为品牌资产。",
+            "rootCause": "官网不可达切断了权威背书的沉淀路径：景区等级、科普基地、上市公司资质等强背书信号，既无法被 AI 从官方源抓取，也无法形成可被交叉验证的引用网络。",
+            "evidence": {
+              "level": "L2",
+              "sources": [
+                {
+                  "url": "https://example.com/html5/you/cranking/sight/dalian4/100001412799.html",
+                  "title": "携程 大连必打卡景点榜",
+                  "snippet": "示例海洋馆 4A 第 4 位；对照竞品馆 5A 第 2 位；森林动物园 4A 第 3 位"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "code": "CONTENT_ASSETS",
+          "name": "内容资产",
+          "weight": 0.15,
+          "score": 25,
+          "comment": "5 类自有内容中，场馆介绍仅以第三方描述存在（5 个场馆），FAQ 为 0、自有票价页为 0、评测内容为 0、博客为 0。票价与票种信息 100% 托管在携程/同程/Trip。品牌在线上没有任何自己定义的产品事实。",
+          "evidenceCoverage": {
+            "L1": 0,
+            "L2": 0.4,
+            "L3": 0.6
+          },
+          "rootCause": {
+            "symptom": "5 类内容中 FAQ、自有票价页、评测、博客四类均为 0；场馆信息仅以第三方描述形式存在。",
+            "directCause": "内容生产长期外包给 OTA 平台——票价由平台维护、场馆介绍由平台撰写、游客问答沉淀在平台评论区，品牌从未建立自己的内容生产与维护机制。",
+            "rootCause": "官网不可达使「建立自有内容」这件事在物理上无法执行：没有可访问的自有站点，就没有任何承载内容的容器，内容策略无从落地。",
+            "evidence": {
+              "level": "L1",
+              "sources": [
+                {
+                  "url": "https://example.com/",
+                  "title": "示例海洋馆官网（实测 HTTP 502，无法承载任何自有内容）"
+                }
+              ],
+              "fetchedAt": "2026-08-29T12:50:00+08:00"
+            }
+          }
+        },
+        {
+          "code": "STRUCTURE_MARKUP",
+          "name": "结构化与标记",
+          "weight": 0.15,
+          "score": 15,
+          "comment": "6 项检测全部无法执行——官网 502 不可达，curl 抓取原始 HTML 失败。按降级规则记为未通过（L3，非实测）。这是全部六维中失分最重的一项，且是唯一一个「不花钱修好就能立刻改变」的维度：竞品对照竞品馆官网实测 HTTP 200、含 Title 与 meta Description、4 个表格，6 项通过 4 项，得 50 分。",
+          "evidenceCoverage": {
+            "L1": 0,
+            "L2": 0,
+            "L3": 1
+          },
+          "rootCause": {
+            "symptom": "6 项结构化检测全部无法执行：官网 http/https 各形态返回 502，www 子域 DNS 未解析，curl 抓取原始 HTML 失败。",
+            "directCause": "站点对公网不可达，任何机器可读标记（JSON-LD、OG、viewport）都无从谈起——连 HTML 都拿不到。",
+            "rootCause": "官网的可用性本身没有被当作一项需要监控的经营指标来对待：竞品官网可正常访问（200），而本品牌站点 502 且 www 子域 DNS 未解析，说明站点运维长期处于无人负责状态。",
+            "evidence": {
+              "level": "L1",
+              "sources": [
+                {
+                  "url": "https://example.com/",
+                  "title": "示例海洋馆官网（HTTP 502）"
+                },
+                {
+                  "url": "https://example.com",
+                  "title": "竞品对照竞品馆官网（HTTP 200，对照组）"
+                }
+              ],
+              "fetchedAt": "2026-08-29T12:52:00+08:00",
+              "note": "curl 实测：示例海洋馆 502 / DNS NXDOMAIN；对照竞品馆 200、15.5KB、4 个 table、含 Title 与 meta Description，但无 JSON-LD / OG / viewport"
+            }
+          }
+        },
+        {
+          "code": "SENTIMENT",
+          "name": "舆情健康",
+          "weight": 0.15,
+          "score": 78,
+          "comment": "负面率 8%，属低风险区间。携程 4.5、同程 4.7、Trip.com 4.4（1.9 万条评价中负面 446 条，约 6.2%）。核心优势被反复提及：白鲸/海豚/海象表演精彩、118 米海底隧道、位置便利（星海广场旁地铁可达）、场馆集中适合低龄儿童。主要扣分项：旺季排队拥挤为 high severity 且多源复现，但官方无任何内容承接与疏导。",
+          "evidenceCoverage": {
+            "L1": 0,
+            "L2": 1,
+            "L3": 0
+          }
+        },
+        {
+          "code": "COMPETITIVE",
+          "name": "竞争位势",
+          "weight": 0.1,
+          "score": 70,
+          "comment": "声量份额 26.1%（23 次共现）居品类第 2，与首名对照竞品馆（30.7%，27 次）差距仅 4.6 个百分点，远高于品类均值 8%。第三名森林动物园 12.5%，已被拉开明显身位。双寡头格局清晰，示例海洋馆稳居第二梯队头部。",
+          "evidenceCoverage": {
+            "L1": 0,
+            "L2": 1,
+            "L3": 0
+          }
+        }
+      ]
+    },
+    "ACTION": {
+      "summary": "三个低分维度（结构化 15、内容资产 25、检索可见度 68）表面看是三件事，实际是同一个根因——官网不可达。因此优先级极其清晰：先恢复官网，再把它建成品牌自己的事实中枢，这一举动能同时撬动三个维度。相比逐个维度做优化，这条路径的投入产出比高出一个量级。",
+      "scoreProjection": {
+        "currentScore": 54,
+        "projectedScore": 80,
+        "dimensionProjections": [
+          {
+            "dimension": "STRUCTURE_MARKUP",
+            "current": 15,
+            "projected": 65
+          },
+          {
+            "dimension": "CONTENT_ASSETS",
+            "current": 25,
+            "projected": 72
+          },
+          {
+            "dimension": "RETRIEVABILITY",
+            "current": 68,
+            "projected": 84
+          },
+          {
+            "dimension": "AUTHORITY",
+            "current": 62,
+            "projected": 74
+          }
+        ]
+      },
+      "actions": [
+        {
+          "priority": "P0",
+          "dimension": "STRUCTURE_MARKUP",
+          "title": "恢复官网公网可达性并建立可用性监控",
+          "description": "实测 sample-brand.example 的 http/https 各形态全部返回 502，www 子域 DNS 未解析；同期竞品对照竞品馆官网正常 200。这是全部三个低分维度的共同根因，其余动作都依赖它落地。",
+          "expectedGain": 8,
+          "effort": "moderate",
+          "nextSteps": [
+            "排查 502 根因（源站故障 / 域名到期 / CDN 配置）",
+            "修复 www 子域的 DNS 解析记录",
+            "接入可用性监控与告警，把「官网可访问」变成有owner的经营指标"
+          ]
+        },
+        {
+          "priority": "P0",
+          "dimension": "CONTENT_ASSETS",
+          "title": "上线官网核心内容：五大场馆页 + 票价表格 + FAQ",
+          "description": "当前 5 类自有内容中 FAQ、自有票价页、评测、博客四类均为 0，票价信息 100% 托管在 OTA。需把品牌自己定义的产品事实搬回自有站点。",
+          "expectedGain": 6,
+          "effort": "moderate",
+          "nextSteps": [
+            "为海洋世界/极地世界/珊瑚世界/银河星海/厉害塔各建独立介绍页",
+            "票价与票种用 HTML <table> 呈现（不用图片），与 OTA 保持一致",
+            "建 FAQ 栏目，优先覆盖：表演时刻表、场馆分布与交通、旺季错峰建议、票务退改"
+          ]
+        },
+        {
+          "priority": "P0",
+          "dimension": "RETRIEVABILITY",
+          "title": "把「全室内不怕雨」做成可检索的内容位置",
+          "description": "实测「大连 下雨天 室内景点 推荐」推荐了以户外为主的竞品对照竞品馆，示例海洋馆缺席——而示例海洋馆五大场馆全为室内。这是品牌最匹配却完全没打出去的一张牌。",
+          "expectedGain": 5,
+          "effort": "moderate",
+          "nextSteps": [
+            "在官网与场馆页明确标注「全室内场馆 / 全天候不受天气影响」属性",
+            "产出「大连雨季亲子游怎么安排」类选题内容，含可摘录的对比表格",
+            "向携程/同程/美团补充室内属性标签，争取进入平台雨天推荐位"
+          ]
+        },
+        {
+          "priority": "P1",
+          "dimension": "STRUCTURE_MARKUP",
+          "title": "补齐结构化标记：JSON-LD / OG / 移动端适配",
+          "description": "竞品对照竞品馆官网实测 6 项通过 4 项（含 Title、meta Description、4 个表格），得 50 分；示例海洋馆因站点不可达为 15 分。官网恢复后这是成本最低的补课项。",
+          "expectedGain": 5,
+          "effort": "quick_win",
+          "nextSteps": [
+            "为场馆页加 Place/TouristAttraction、票价页加 Offer 类型的 JSON-LD",
+            "补全 OG 标签与 viewport 移动端适配",
+            "用 Google 结构化数据测试工具逐页验证"
+          ]
+        },
+        {
+          "priority": "P1",
+          "dimension": "AUTHORITY",
+          "title": "提升景区等级与榜单排名",
+          "description": "当前 4A、携程必打卡榜第 4，落后于对照竞品馆 5A（第 2）与森林动物园 4A（第 3）。等级与排名是 AI 判断权威性的强信号。",
+          "expectedGain": 3,
+          "effort": "heavy",
+          "nextSteps": [
+            "启动 5A 景区创建申报",
+            "与携程/同程沟通榜单运营，争取进入前 3",
+            "把科普基地、上市公司、学术合作等资质在官网上集中展示并做结构化标记"
+          ]
+        },
+        {
+          "priority": "P2",
+          "dimension": "SENTIMENT",
+          "title": "旺季分流与设施更新，用官方内容承接负面议题",
+          "description": "负面率仅 8% 属低风险，但「旺季排队拥挤」为 high severity 且多源复现（Trip.com、大众点评、悦享伴旅），官方目前零内容承接。",
+          "expectedGain": 3,
+          "effort": "heavy",
+          "nextSteps": [
+            "在官网与公众号发布分时段错峰指引与实时客流提示",
+            "海底隧道照明与玻璃更新（大众点评集中吐槽点）",
+            "补充卫生间、停车、婴儿车通道等配套设施并在 FAQ 中说明"
+          ]
+        }
+      ],
+      "roadmap": [
+        {
+          "phase": "P1",
+          "title": "止血与重建",
+          "timeline": "1-4 周",
+          "items": [
+            "恢复官网公网可达性 + 可用性监控",
+            "上线五大场馆页与票价表格",
+            "建 FAQ 栏目"
+          ]
+        },
+        {
+          "phase": "P2",
+          "title": "补课与占位",
+          "timeline": "1-3 月",
+          "items": [
+            "补齐 JSON-LD / OG / 移动端适配",
+            "室内雨天场景内容布局",
+            "启动 5A 创建申报"
+          ]
+        },
+        {
+          "phase": "P3",
+          "title": "体验与口碑",
+          "timeline": "3-6 月",
+          "items": [
+            "海底隧道照明与玻璃更新",
+            "旺季分流机制",
+            "配套设施补强"
+          ]
+        }
+      ]
+    },
+    "SIMULATION": {
+      "enabled": true,
+      "note": "以下为 AI 推演的品牌提及率，非实测数据，不参与总分计算，不可对外引用。",
+      "platforms": [
+        {
+          "platform": "DeepSeek",
+          "range": [
+            0.25,
+            0.45
+          ],
+          "confidence": "low"
+        },
+        {
+          "platform": "豆包",
+          "range": [
+            0.3,
+            0.5
+          ],
+          "confidence": "low"
+        },
+        {
+          "platform": "元宝",
+          "range": [
+            0.25,
+            0.45
+          ],
+          "confidence": "low"
+        },
+        {
+          "platform": "通义千问",
+          "range": [
+            0.28,
+            0.48
+          ],
+          "confidence": "low"
+        },
+        {
+          "platform": "Kimi",
+          "range": [
+            0.3,
+            0.52
+          ],
+          "confidence": "low"
+        }
+      ]
+    },
+    "SOCIAL": {
+      "platforms": [
+        {
+          "platform": "xhs",
+          "itemCount": 5,
+          "engagement": 12840,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "示例海洋馆 小红书检索结果",
+                "url": "https://example.com/search_result?keyword=%E7%A4%BA%E4%BE%8B%E6%B5%B7%E6%B4%8B%E9%A6%86"
+              }
+            ]
+          }
+        },
+        {
+          "platform": "dy",
+          "itemCount": 4,
+          "engagement": 45200,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "示例海洋馆 抖音检索结果",
+                "url": "https://example.com/search/%E7%A4%BA%E4%BE%8B%E6%B5%B7%E6%B4%8B%E9%A6%86%E6%B5%B7%E6%B4%8B%E4%B8%96%E7%95%8C"
+              }
+            ]
+          }
+        },
+        {
+          "platform": "gzh",
+          "itemCount": 3,
+          "engagement": 9600,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "示例海洋馆 公众号检索结果",
+                "url": "https://example.com/sample?type=2&query=%E7%A4%BA%E4%BE%8B%E6%B5%B7%E6%B4%8B%E9%A6%86"
+              }
+            ]
+          }
+        }
+      ],
+      "posts": [
+        {
+          "platform": "xhs",
+          "title": "示例海洋馆避坑！排队两小时看十分钟，带娃慎入",
+          "url": "https://example.com/explore/sample0000000000000001",
+          "sentiment": "negative",
+          "engagement": 8600,
+          "publishedAt": "2026-08-12",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "示例海洋馆避坑！排队两小时看十分钟",
+                "url": "https://example.com/explore/sample0000000000000001"
+              }
+            ]
+          }
+        },
+        {
+          "platform": "xhs",
+          "title": "示例海洋馆遛娃实测：场馆全室内，下雨天也能玩",
+          "url": "https://example.com/explore/sample0000000000000002",
+          "sentiment": "positive",
+          "engagement": 2100,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "示例海洋馆遛娃实测：场馆全室内",
+                "url": "https://example.com/explore/sample0000000000000002"
+              }
+            ]
+          }
+        },
+        {
+          "platform": "dy",
+          "title": "示例海洋馆 vs 对照竞品馆，到底该去哪个？一条视频说清楚",
+          "url": "https://example.com/video/sample000000000000003",
+          "sentiment": "neutral",
+          "engagement": 31000,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "示例海洋馆 vs 对照竞品馆对比视频",
+                "url": "https://example.com/video/sample000000000000003"
+              }
+            ]
+          }
+        },
+        {
+          "platform": "dy",
+          "title": "示例海洋馆设施有点旧了，表演还是好看的",
+          "url": "https://example.com/video/sample000000000000004",
+          "sentiment": "negative",
+          "engagement": 7400,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "示例海洋馆设施陈旧讨论",
+                "url": "https://example.com/video/sample000000000000004"
+              }
+            ]
+          }
+        },
+        {
+          "platform": "gzh",
+          "title": "2026 大连亲子游攻略：示例海洋馆、对照竞品馆、森林动物园怎么选",
+          "url": "https://example.com/s/sample000000000000005",
+          "sentiment": "neutral",
+          "engagement": 5200,
+          "evidence": {
+            "level": "L1",
+            "sources": [
+              {
+                "title": "2026 大连亲子游攻略",
+                "url": "https://example.com/s/sample000000000000005"
+              }
+            ],
+            "fetchedAt": "2026-08-29"
+          }
+        },
+        {
+          "platform": "gzh",
+          "title": "示例海洋馆门票性价比讨论：268 的票值不值",
+          "url": "https://example.com/s/sample000000000000006",
+          "sentiment": "negative",
+          "engagement": 3300,
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "示例海洋馆门票性价比讨论",
+                "url": "https://example.com/s/sample000000000000006"
+              }
+            ]
+          }
+        }
+      ],
+      "distribution": {
+        "positive": 17,
+        "neutral": 33,
+        "negative": 50
+      },
+      "negativeRate": 0.5,
+      "topTopics": [
+        {
+          "topic": "排队时长",
+          "count": 24,
+          "sentiment": "negative"
+        },
+        {
+          "topic": "场馆陈旧",
+          "count": 15,
+          "sentiment": "negative"
+        },
+        {
+          "topic": "性价比",
+          "count": 12,
+          "sentiment": "negative"
+        },
+        {
+          "topic": "室内场馆（下雨天可玩）",
+          "count": 9,
+          "sentiment": "positive"
+        }
+      ],
+      "competitorsMentioned": [
+        {
+          "name": "对照竞品馆",
+          "mentions": 18
+        },
+        {
+          "name": "大连森林动物园",
+          "mentions": 6
+        }
+      ],
+      "windowDays": 30,
+      "evidenceCoverage": {
+        "L1": 0.17,
+        "L2": 0.83,
+        "L3": 0
+      },
+      "note": "回归测试样例数据。真实采集时每平台建议 ≥10 条样本。"
+    },
+    "HOTSEARCH": {
+      "items": [
+        {
+          "platform": "wb",
+          "title": "大连旅游旺季景区排队",
+          "heat": 486000,
+          "brandHit": true,
+          "sentiment": "negative",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "微博热搜：大连旅游旺季景区排队",
+                "url": "https://example.com/sample?q=%E7%A4%BA%E4%BE%8B%E6%99%AF%E5%8C%BA%E6%8E%92%E9%98%9F"
+              }
+            ]
+          }
+        },
+        {
+          "platform": "dy",
+          "title": "示例海洋馆白鲸表演",
+          "heat": 132000,
+          "brandHit": true,
+          "sentiment": "neutral",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "title": "抖音热榜：示例海洋馆白鲸表演",
+                "url": "https://example.com/hot/sample"
+              }
+            ]
+          }
+        }
+      ],
+      "brandOnList": true,
+      "maxBrandHeat": 486000,
+      "categoryHeat": 2100000,
+      "negativeAssociation": true,
+      "windowDays": 30,
+      "evidenceCoverage": {
+        "L1": 0,
+        "L2": 1,
+        "L3": 0
+      },
+      "note": "回归测试样例数据。"
+    }
+  },
+  "score": {
+    "totalScore": 54,
+    "level": "较差",
+    "levelColor": "#dc2626",
+    "dimensions": [
+      {
+        "code": "RETRIEVABILITY",
+        "name": "检索可见度",
+        "weight": 0.25,
+        "score": 68,
+        "comment": "7 条实测查询命中 6 条（85.7%）。含品牌词查询 4 条全中且多居首位；无品牌词通用查询 3 条命中 2 条（66.7%），其中「大连 海洋馆 推荐 哪个好」在携程结果中位列第 1。唯一失手的是「大连 下雨天 室内景点 推荐」——恰恰是品牌最匹配该场景的一次机会。另需扣减：官网不可达使 AI 失去官方引用源。",
+        "evidenceCoverage": {
+          "L1": 0,
+          "L2": 1,
+          "L3": 0
+        },
+        "findings": [],
+        "rootCause": {
+          "symptom": "无品牌词通用查询 3 条命中 2 条，唯一失手的「下雨天室内景点」恰是品牌最匹配的场景；官网不可达使 AI 无官方源可引。",
+          "directCause": "品牌的线上存在完全依托第三方平台的内容编排，自己没有可被引用的内容入口；同时「全室内」这一属性从未被结构化地表达在任何可被检索的页面上。",
+          "rootCause": "官网长期不可达（502 + DNS 未解析），导致品牌既没有内容出口，也无法通过结构化标记向 AI 声明自身属性（室内/票价/场馆），实体优势无法转化为检索可见度。",
+          "evidence": {
+            "level": "L1",
+            "sources": [
+              {
+                "url": "https://example.com/",
+                "title": "示例海洋馆官网（实测 HTTP 502）"
+              }
+            ],
+            "fetchedAt": "2026-08-29T12:50:00+08:00",
+            "note": "对照组与竞品官网均正常，已排除本地网络因素"
+          }
+        }
+      },
+      {
+        "code": "AUTHORITY",
+        "name": "权威与背书",
+        "weight": 0.2,
+        "score": 62,
+        "comment": "第三方覆盖数量不弱：携程必打卡榜、新浪旅游、辽宁文旅、省科协科普基地名录、首都师范大学学报论文、Trip.com、马蜂窝共 7 个可核查来源。但质量偏弱——携程榜仅排第 4，落后于对照竞品馆（5A，第 2）与森林动物园（4A，第 3）；景区等级 4A 低于竞品 5A；且官网不可达使背书无法回流到品牌自有资产。",
+        "evidenceCoverage": {
+          "L1": 0,
+          "L2": 1,
+          "L3": 0
+        },
+        "findings": [],
+        "rootCause": {
+          "symptom": "第三方来源数量达 7 个，但携程必打卡榜仅列第 4，景区等级 4A 低于竞品对照竞品馆的 5A。",
+          "directCause": "背书全部停留在「被提及」层面，没有回流——因为没有可访问的自有站点去承接和展示这些资质，第三方背书无法沉淀为品牌资产。",
+          "rootCause": "官网不可达切断了权威背书的沉淀路径：景区等级、科普基地、上市公司资质等强背书信号，既无法被 AI 从官方源抓取，也无法形成可被交叉验证的引用网络。",
+          "evidence": {
+            "level": "L2",
+            "sources": [
+              {
+                "url": "https://example.com/html5/you/cranking/sight/dalian4/100001412799.html",
+                "title": "携程 大连必打卡景点榜",
+                "snippet": "示例海洋馆 4A 第 4 位；对照竞品馆 5A 第 2 位；森林动物园 4A 第 3 位"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "code": "CONTENT_ASSETS",
+        "name": "内容资产",
+        "weight": 0.15,
+        "score": 25,
+        "comment": "5 类自有内容中，场馆介绍仅以第三方描述存在（5 个场馆），FAQ 为 0、自有票价页为 0、评测内容为 0、博客为 0。票价与票种信息 100% 托管在携程/同程/Trip。品牌在线上没有任何自己定义的产品事实。",
+        "evidenceCoverage": {
+          "L1": 0,
+          "L2": 0.4,
+          "L3": 0.6
+        },
+        "findings": [],
+        "rootCause": {
+          "symptom": "5 类内容中 FAQ、自有票价页、评测、博客四类均为 0；场馆信息仅以第三方描述形式存在。",
+          "directCause": "内容生产长期外包给 OTA 平台——票价由平台维护、场馆介绍由平台撰写、游客问答沉淀在平台评论区，品牌从未建立自己的内容生产与维护机制。",
+          "rootCause": "官网不可达使「建立自有内容」这件事在物理上无法执行：没有可访问的自有站点，就没有任何承载内容的容器，内容策略无从落地。",
+          "evidence": {
+            "level": "L1",
+            "sources": [
+              {
+                "url": "https://example.com/",
+                "title": "示例海洋馆官网（实测 HTTP 502，无法承载任何自有内容）"
+              }
+            ],
+            "fetchedAt": "2026-08-29T12:50:00+08:00"
+          }
+        }
+      },
+      {
+        "code": "STRUCTURE_MARKUP",
+        "name": "结构化与标记",
+        "weight": 0.15,
+        "score": 15,
+        "comment": "6 项检测全部无法执行——官网 502 不可达，curl 抓取原始 HTML 失败。按降级规则记为未通过（L3，非实测）。这是全部六维中失分最重的一项，且是唯一一个「不花钱修好就能立刻改变」的维度：竞品对照竞品馆官网实测 HTTP 200、含 Title 与 meta Description、4 个表格，6 项通过 4 项，得 50 分。",
+        "evidenceCoverage": {
+          "L1": 0,
+          "L2": 0,
+          "L3": 1
+        },
+        "findings": [],
+        "rootCause": {
+          "symptom": "6 项结构化检测全部无法执行：官网 http/https 各形态返回 502，www 子域 DNS 未解析，curl 抓取原始 HTML 失败。",
+          "directCause": "站点对公网不可达，任何机器可读标记（JSON-LD、OG、viewport）都无从谈起——连 HTML 都拿不到。",
+          "rootCause": "官网的可用性本身没有被当作一项需要监控的经营指标来对待：竞品官网可正常访问（200），而本品牌站点 502 且 www 子域 DNS 未解析，说明站点运维长期处于无人负责状态。",
+          "evidence": {
+            "level": "L1",
+            "sources": [
+              {
+                "url": "https://example.com/",
+                "title": "示例海洋馆官网（HTTP 502）"
+              },
+              {
+                "url": "https://example.com",
+                "title": "竞品对照竞品馆官网（HTTP 200，对照组）"
+              }
+            ],
+            "fetchedAt": "2026-08-29T12:52:00+08:00",
+            "note": "curl 实测：示例海洋馆 502 / DNS NXDOMAIN；对照竞品馆 200、15.5KB、4 个 table、含 Title 与 meta Description，但无 JSON-LD / OG / viewport"
+          }
+        }
+      },
+      {
+        "code": "SENTIMENT",
+        "name": "舆情健康",
+        "weight": 0.15,
+        "score": 78,
+        "comment": "负面率 8%，属低风险区间。携程 4.5、同程 4.7、Trip.com 4.4（1.9 万条评价中负面 446 条，约 6.2%）。核心优势被反复提及：白鲸/海豚/海象表演精彩、118 米海底隧道、位置便利（星海广场旁地铁可达）、场馆集中适合低龄儿童。主要扣分项：旺季排队拥挤为 high severity 且多源复现，但官方无任何内容承接与疏导。",
+        "evidenceCoverage": {
+          "L1": 0,
+          "L2": 1,
+          "L3": 0
+        },
+        "findings": []
+      },
+      {
+        "code": "COMPETITIVE",
+        "name": "竞争位势",
+        "weight": 0.1,
+        "score": 70,
+        "comment": "声量份额 26.1%（23 次共现）居品类第 2，与首名对照竞品馆（30.7%，27 次）差距仅 4.6 个百分点，远高于品类均值 8%。第三名森林动物园 12.5%，已被拉开明显身位。双寡头格局清晰，示例海洋馆稳居第二梯队头部。",
+        "evidenceCoverage": {
+          "L1": 0,
+          "L2": 1,
+          "L3": 0
+        },
+        "findings": []
+      }
+    ]
+  },
+  "evidence": {
+    "coverage": {
+      "L1": 0,
+      "L2": 0.76,
+      "L3": 0.24
+    },
+    "confidence": {
+      "score": 49,
+      "label": "中"
+    }
+  },
+  "benchmark": {
+    "source": "measured",
+    "label": "竞品实测",
+    "desc": "同品类竞品同口径实测",
+    "sampleSize": 1,
+    "knownCount": 2,
+    "note": "对头号竞品对照竞品馆做同口径实测：结构化维度用 curl 抓取官网原始 HTML 检测（大小写不敏感）；权威维度用携程必打卡榜排名 + 景区等级 + 官网可达性综合判定。仅测到 2 个维度，其余留空。",
+    "scores": {
+      "STRUCTURE_MARKUP": 50,
+      "AUTHORITY": 75
+    },
+    "rejected": []
+  },
+  "waterfall": {
+    "start": 100,
+    "items": [
+      {
+        "code": "STRUCTURE_MARKUP",
+        "name": "结构化与标记",
+        "weight": 0.15,
+        "score": 15,
+        "loss": 12.75
+      },
+      {
+        "code": "CONTENT_ASSETS",
+        "name": "内容资产",
+        "weight": 0.15,
+        "score": 25,
+        "loss": 11.25
+      },
+      {
+        "code": "RETRIEVABILITY",
+        "name": "检索可见度",
+        "weight": 0.25,
+        "score": 68,
+        "loss": 8
+      },
+      {
+        "code": "AUTHORITY",
+        "name": "权威与背书",
+        "weight": 0.2,
+        "score": 62,
+        "loss": 7.6
+      },
+      {
+        "code": "SENTIMENT",
+        "name": "舆情健康",
+        "weight": 0.15,
+        "score": 78,
+        "loss": 3.3
+      },
+      {
+        "code": "COMPETITIVE",
+        "name": "竞争位势",
+        "weight": 0.1,
+        "score": 70,
+        "loss": 3
+      }
+    ],
+    "end": 54,
+    "totalLoss": 45.9,
+    "benchmark": null
+  },
+  "priorities": {
+    "quadrants": {
+      "quick": [
+        {
+          "action": {
+            "priority": "P0",
+            "dimension": "STRUCTURE_MARKUP",
+            "title": "恢复官网公网可达性并建立可用性监控",
+            "description": "实测 sample-brand.example 的 http/https 各形态全部返回 502，www 子域 DNS 未解析；同期竞品对照竞品馆官网正常 200。这是全部三个低分维度的共同根因，其余动作都依赖它落地。",
+            "expectedGain": 8,
+            "effort": "moderate",
+            "nextSteps": [
+              "排查 502 根因（源站故障 / 域名到期 / CDN 配置）",
+              "修复 www 子域的 DNS 解析记录",
+              "接入可用性监控与告警，把「官网可访问」变成有owner的经营指标"
+            ]
+          },
+          "gain": 8,
+          "impact": "high",
+          "feasibility": "high",
+          "quadrant": "quick"
+        },
+        {
+          "action": {
+            "priority": "P0",
+            "dimension": "CONTENT_ASSETS",
+            "title": "上线官网核心内容：五大场馆页 + 票价表格 + FAQ",
+            "description": "当前 5 类自有内容中 FAQ、自有票价页、评测、博客四类均为 0，票价信息 100% 托管在 OTA。需把品牌自己定义的产品事实搬回自有站点。",
+            "expectedGain": 6,
+            "effort": "moderate",
+            "nextSteps": [
+              "为海洋世界/极地世界/珊瑚世界/银河星海/厉害塔各建独立介绍页",
+              "票价与票种用 HTML <table> 呈现（不用图片），与 OTA 保持一致",
+              "建 FAQ 栏目，优先覆盖：表演时刻表、场馆分布与交通、旺季错峰建议、票务退改"
+            ]
+          },
+          "gain": 6,
+          "impact": "high",
+          "feasibility": "high",
+          "quadrant": "quick"
+        },
+        {
+          "action": {
+            "priority": "P0",
+            "dimension": "RETRIEVABILITY",
+            "title": "把「全室内不怕雨」做成可检索的内容位置",
+            "description": "实测「大连 下雨天 室内景点 推荐」推荐了以户外为主的竞品对照竞品馆，示例海洋馆缺席——而示例海洋馆五大场馆全为室内。这是品牌最匹配却完全没打出去的一张牌。",
+            "expectedGain": 5,
+            "effort": "moderate",
+            "nextSteps": [
+              "在官网与场馆页明确标注「全室内场馆 / 全天候不受天气影响」属性",
+              "产出「大连雨季亲子游怎么安排」类选题内容，含可摘录的对比表格",
+              "向携程/同程/美团补充室内属性标签，争取进入平台雨天推荐位"
+            ]
+          },
+          "gain": 5,
+          "impact": "high",
+          "feasibility": "high",
+          "quadrant": "quick"
+        },
+        {
+          "action": {
+            "priority": "P1",
+            "dimension": "STRUCTURE_MARKUP",
+            "title": "补齐结构化标记：JSON-LD / OG / 移动端适配",
+            "description": "竞品对照竞品馆官网实测 6 项通过 4 项（含 Title、meta Description、4 个表格），得 50 分；示例海洋馆因站点不可达为 15 分。官网恢复后这是成本最低的补课项。",
+            "expectedGain": 5,
+            "effort": "quick_win",
+            "nextSteps": [
+              "为场馆页加 Place/TouristAttraction、票价页加 Offer 类型的 JSON-LD",
+              "补全 OG 标签与 viewport 移动端适配",
+              "用 Google 结构化数据测试工具逐页验证"
+            ]
+          },
+          "gain": 5,
+          "impact": "high",
+          "feasibility": "high",
+          "quadrant": "quick"
+        }
+      ],
+      "strategic": [],
+      "fillin": [],
+      "reconsider": [
+        {
+          "action": {
+            "priority": "P1",
+            "dimension": "AUTHORITY",
+            "title": "提升景区等级与榜单排名",
+            "description": "当前 4A、携程必打卡榜第 4，落后于对照竞品馆 5A（第 2）与森林动物园 4A（第 3）。等级与排名是 AI 判断权威性的强信号。",
+            "expectedGain": 3,
+            "effort": "heavy",
+            "nextSteps": [
+              "启动 5A 景区创建申报",
+              "与携程/同程沟通榜单运营，争取进入前 3",
+              "把科普基地、上市公司、学术合作等资质在官网上集中展示并做结构化标记"
+            ]
+          },
+          "gain": 3,
+          "impact": "low",
+          "feasibility": "low",
+          "quadrant": "reconsider"
+        },
+        {
+          "action": {
+            "priority": "P2",
+            "dimension": "SENTIMENT",
+            "title": "旺季分流与设施更新，用官方内容承接负面议题",
+            "description": "负面率仅 8% 属低风险，但「旺季排队拥挤」为 high severity 且多源复现（Trip.com、大众点评、悦享伴旅），官方目前零内容承接。",
+            "expectedGain": 3,
+            "effort": "heavy",
+            "nextSteps": [
+              "在官网与公众号发布分时段错峰指引与实时客流提示",
+              "海底隧道照明与玻璃更新（大众点评集中吐槽点）",
+              "补充卫生间、停车、婴儿车通道等配套设施并在 FAQ 中说明"
+            ]
+          },
+          "gain": 3,
+          "impact": "low",
+          "feasibility": "low",
+          "quadrant": "reconsider"
+        }
+      ]
+    },
+    "meanGain": 5,
+    "items": [
+      {
+        "action": {
+          "priority": "P0",
+          "dimension": "STRUCTURE_MARKUP",
+          "title": "恢复官网公网可达性并建立可用性监控",
+          "description": "实测 sample-brand.example 的 http/https 各形态全部返回 502，www 子域 DNS 未解析；同期竞品对照竞品馆官网正常 200。这是全部三个低分维度的共同根因，其余动作都依赖它落地。",
+          "expectedGain": 8,
+          "effort": "moderate",
+          "nextSteps": [
+            "排查 502 根因（源站故障 / 域名到期 / CDN 配置）",
+            "修复 www 子域的 DNS 解析记录",
+            "接入可用性监控与告警，把「官网可访问」变成有owner的经营指标"
+          ]
+        },
+        "gain": 8,
+        "impact": "high",
+        "feasibility": "high",
+        "quadrant": "quick"
+      },
+      {
+        "action": {
+          "priority": "P0",
+          "dimension": "CONTENT_ASSETS",
+          "title": "上线官网核心内容：五大场馆页 + 票价表格 + FAQ",
+          "description": "当前 5 类自有内容中 FAQ、自有票价页、评测、博客四类均为 0，票价信息 100% 托管在 OTA。需把品牌自己定义的产品事实搬回自有站点。",
+          "expectedGain": 6,
+          "effort": "moderate",
+          "nextSteps": [
+            "为海洋世界/极地世界/珊瑚世界/银河星海/厉害塔各建独立介绍页",
+            "票价与票种用 HTML <table> 呈现（不用图片），与 OTA 保持一致",
+            "建 FAQ 栏目，优先覆盖：表演时刻表、场馆分布与交通、旺季错峰建议、票务退改"
+          ]
+        },
+        "gain": 6,
+        "impact": "high",
+        "feasibility": "high",
+        "quadrant": "quick"
+      },
+      {
+        "action": {
+          "priority": "P0",
+          "dimension": "RETRIEVABILITY",
+          "title": "把「全室内不怕雨」做成可检索的内容位置",
+          "description": "实测「大连 下雨天 室内景点 推荐」推荐了以户外为主的竞品对照竞品馆，示例海洋馆缺席——而示例海洋馆五大场馆全为室内。这是品牌最匹配却完全没打出去的一张牌。",
+          "expectedGain": 5,
+          "effort": "moderate",
+          "nextSteps": [
+            "在官网与场馆页明确标注「全室内场馆 / 全天候不受天气影响」属性",
+            "产出「大连雨季亲子游怎么安排」类选题内容，含可摘录的对比表格",
+            "向携程/同程/美团补充室内属性标签，争取进入平台雨天推荐位"
+          ]
+        },
+        "gain": 5,
+        "impact": "high",
+        "feasibility": "high",
+        "quadrant": "quick"
+      },
+      {
+        "action": {
+          "priority": "P1",
+          "dimension": "STRUCTURE_MARKUP",
+          "title": "补齐结构化标记：JSON-LD / OG / 移动端适配",
+          "description": "竞品对照竞品馆官网实测 6 项通过 4 项（含 Title、meta Description、4 个表格），得 50 分；示例海洋馆因站点不可达为 15 分。官网恢复后这是成本最低的补课项。",
+          "expectedGain": 5,
+          "effort": "quick_win",
+          "nextSteps": [
+            "为场馆页加 Place/TouristAttraction、票价页加 Offer 类型的 JSON-LD",
+            "补全 OG 标签与 viewport 移动端适配",
+            "用 Google 结构化数据测试工具逐页验证"
+          ]
+        },
+        "gain": 5,
+        "impact": "high",
+        "feasibility": "high",
+        "quadrant": "quick"
+      },
+      {
+        "action": {
+          "priority": "P1",
+          "dimension": "AUTHORITY",
+          "title": "提升景区等级与榜单排名",
+          "description": "当前 4A、携程必打卡榜第 4，落后于对照竞品馆 5A（第 2）与森林动物园 4A（第 3）。等级与排名是 AI 判断权威性的强信号。",
+          "expectedGain": 3,
+          "effort": "heavy",
+          "nextSteps": [
+            "启动 5A 景区创建申报",
+            "与携程/同程沟通榜单运营，争取进入前 3",
+            "把科普基地、上市公司、学术合作等资质在官网上集中展示并做结构化标记"
+          ]
+        },
+        "gain": 3,
+        "impact": "low",
+        "feasibility": "low",
+        "quadrant": "reconsider"
+      },
+      {
+        "action": {
+          "priority": "P2",
+          "dimension": "SENTIMENT",
+          "title": "旺季分流与设施更新，用官方内容承接负面议题",
+          "description": "负面率仅 8% 属低风险，但「旺季排队拥挤」为 high severity 且多源复现（Trip.com、大众点评、悦享伴旅），官方目前零内容承接。",
+          "expectedGain": 3,
+          "effort": "heavy",
+          "nextSteps": [
+            "在官网与公众号发布分时段错峰指引与实时客流提示",
+            "海底隧道照明与玻璃更新（大众点评集中吐槽点）",
+            "补充卫生间、停车、婴儿车通道等配套设施并在 FAQ 中说明"
+          ]
+        },
+        "gain": 3,
+        "impact": "low",
+        "feasibility": "low",
+        "quadrant": "reconsider"
+      }
+    ]
+  },
+  "cross": {
+    "available": true,
+    "sources": {
+      "visibility": true,
+      "social": true,
+      "hotsearch": true
+    },
+    "norm": {
+      "socialCeiling": 100000,
+      "hotCeiling": 1000000
+    },
+    "thresholds": {
+      "quad": 50,
+      "gap": 20,
+      "crisis": 40,
+      "negRate": 0.25,
+      "minSocialPosts": 10
+    },
+    "narrativeGap": {
+      "searchSentiment": 52,
+      "socialSentiment": -33,
+      "gap": 85,
+      "verdict": "overstated",
+      "verdictLabel": "叙事虚高",
+      "verdictHint": "公开叙事明显好于社媒真实口碑 —— 高危错位，口碑已在埋雷",
+      "verdictColor": "#A32B2B",
+      "searchNegativeRate": 0.08,
+      "socialNegativeRate": 0.5
+    },
+    "threeSource": {
+      "visibilityIndex": 54,
+      "socialIndex": 97,
+      "hotIndex": 95,
+      "socialEngagement": 67640,
+      "levels": {
+        "visibility": "low",
+        "social": "high",
+        "hotsearch": "high"
+      },
+      "thresholds": {
+        "visibility": 60,
+        "social": 50,
+        "hotsearch": 50
+      },
+      "bands": {
+        "social": {
+          "label": "高热",
+          "hint": "声量显著，话题已在扩散",
+          "color": "#A32B2B"
+        },
+        "hotsearch": {
+          "label": "爆榜",
+          "hint": "高热度在榜",
+          "color": "#A32B2B"
+        }
+      },
+      "quadrant": "heat_without_assets",
+      "quadrantLabel": "有热度无资产",
+      "quadrantHint": "用户已经在聊，但检索侧接不住 —— GEO 最大机会",
+      "quadrantColor": "#D96F18"
+    },
+    "crisis": {
+      "score": 100,
+      "level": "high",
+      "levelLabel": "高危",
+      "channels": [
+        {
+          "code": "sentiment",
+          "name": "检索舆情",
+          "hasData": true,
+          "triggered": false,
+          "intensity": 16,
+          "reason": "负面率 8%，未达预警线"
+        },
+        {
+          "code": "social",
+          "name": "社媒口碑",
+          "hasData": true,
+          "triggered": true,
+          "intensity": 100,
+          "reason": "社媒负面率 50%（样本仅 6 条，低于 10 条，负面率噪声较大）",
+          "sampleCount": 6,
+          "lowSample": true
+        },
+        {
+          "code": "hotsearch",
+          "name": "热搜信号",
+          "hasData": true,
+          "triggered": true,
+          "intensity": 75,
+          "reason": "品牌已上榜且关联负面内容（1 条负面条目）",
+          "negatives": [
+            {
+              "platform": "wb",
+              "title": "大连旅游旺季景区排队",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "triggeredCount": 2,
+      "channelsWithData": 3,
+      "confidence": 100
+    },
+    "competitorUnion": [
+      {
+        "name": "对照竞品馆",
+        "searchShare": 0.307,
+        "socialMentions": 18,
+        "onHotsearch": false,
+        "sources": [
+          "检索",
+          "社媒"
+        ]
+      },
+      {
+        "name": "大连森林动物园",
+        "searchShare": 0.125,
+        "socialMentions": 6,
+        "onHotsearch": false,
+        "sources": [
+          "检索",
+          "社媒"
+        ]
+      },
+      {
+        "name": "星海广场",
+        "searchShare": 0.057,
+        "socialMentions": null,
+        "onHotsearch": false,
+        "sources": [
+          "检索"
+        ]
+      },
+      {
+        "name": "大连海昌发现王国主题公园",
+        "searchShare": 0.045,
+        "socialMentions": null,
+        "onHotsearch": false,
+        "sources": [
+          "检索"
+        ]
+      },
+      {
+        "name": "金石滩国家旅游度假区",
+        "searchShare": 0.045,
+        "socialMentions": null,
+        "onHotsearch": false,
+        "sources": [
+          "检索"
+        ]
+      },
+      {
+        "name": "大连海昌东方水城",
+        "searchShare": 0.045,
+        "socialMentions": null,
+        "onHotsearch": false,
+        "sources": [
+          "检索"
+        ]
+      },
+      {
+        "name": "棒棰岛",
+        "searchShare": 0.045,
+        "socialMentions": null,
+        "onHotsearch": false,
+        "sources": [
+          "检索"
+        ]
+      },
+      {
+        "name": "星海公园",
+        "searchShare": 0.034,
+        "socialMentions": null,
+        "onHotsearch": false,
+        "sources": [
+          "检索"
+        ]
+      },
+      {
+        "name": "大连狮虎园",
+        "searchShare": 0.023,
+        "socialMentions": null,
+        "onHotsearch": false,
+        "sources": [
+          "检索"
+        ]
+      },
+      {
+        "name": "海之韵公园",
+        "searchShare": 0.011,
+        "socialMentions": null,
+        "onHotsearch": false,
+        "sources": [
+          "检索"
+        ]
+      }
+    ],
+    "coverage": {
+      "sourcesAvailable": 3,
+      "sourcesTotal": 3,
+      "ratio": 1,
+      "evidenceCoverage": {
+        "L1": 0.085,
+        "L2": 0.915,
+        "L3": 0
+      },
+      "confidence": {
+        "score": 63,
+        "label": "中"
+      }
+    }
+  },
+  "_sample": {
+    "warning": "样例数据 · 非真实审计结果。品牌名、竞品名与全部 URL 均为占位符，仅用于渲染回归测试。",
+    "purpose": "让 build-report.js / build-markdown.js 脱离活 API 直接渲染，验证改动未破坏输出。",
+    "containsStage5": true
+  }
+}
