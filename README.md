@@ -8,8 +8,8 @@ KenZ 的 AI 专家智能体仓库 —— 一个 monorepo，收纳所有可复用
 
 | 专家 | 花名 | 分类 | 版本 | 简介 | 路径 |
 | --- | --- | --- | --- | --- | --- |
-| `geo-brand-audit` | 品牌GEO顾问 | 05-营销增长 | v1.2.0 | 可核查证据审计品牌在 AI 搜索的可见度：六维评分 + 竞品共现 + 多源交叉分析（社媒/热搜）+ HTML/MD 交付 | [experts/geo-brand-audit](experts/geo-brand-audit) |
-| `depoo-writer` | 迪谱学长 | 06-内容创作 | v1.1.0 | 交互式公众号写作：深度确认 + 五层自检（含去 AI 味）+ 克制编辑感微信排版，默认交付可粘贴的 HTML | [experts/depoo-writer](experts/depoo-writer) |
+| `geo-brand-audit` | 品牌GEO顾问 | 05-营销增长 | v1.2.0 | 可核查证据审计品牌在 AI 搜索的可见度：六维评分 + 竞品共现 + 多源交叉分析（社媒/热搜）+ HTML/MD 交付 | [geo-brand-audit](geo-brand-audit) |
+| `depoo-writer` | 迪谱学长 | 06-内容创作 | v1.1.0 | 交互式公众号写作：深度确认 + 五层自检（含去 AI 味）+ 克制编辑感微信排版，默认交付可粘贴的 HTML | [depoo-writer](depoo-writer) |
 
 ### geo-brand-audit 的能力边界（选这个专家前先看）
 
@@ -39,35 +39,50 @@ KenZ 的 AI 专家智能体仓库 —— 一个 monorepo，收纳所有可复用
 - **路径 A（默认）**：渲染 `微信正文.html` + 浏览器预览，全选复制粘贴到公众号后台。**无需接口权限**。
 - **路径 B（可选）**：调 `draft/add` 推草稿箱，**需账号已微信认证**（未认证返回 48001），且必须用户明确要求。
 
-详见 `experts/depoo-writer/platforms/workbuddy/README.md`。
+详见 `depoo-writer/platforms/workbuddy/README.md`。
 
-## 仓库结构（以 geo-brand-audit 为例）
+## 仓库结构
+
+专家包**平铺在仓库根目录**（专家名即目录名，不套 `experts/` 之类的中间层）：
 
 ```
 kenz-ai-experts/
 ├── README.md                       # 本文件：专家索引与入住规范
-├── experts/
-│   └── geo-brand-audit/
-│       ├── skill/                  # ★ 平台无关核心（被所有端共享，只此一份）
-│       │   ├── SKILL.md            #   方法论/工作流/评分权重/证据规则
-│       │   ├── references/         #   评分规则（含每维判定带）、检索剧本、
-│       │   │                       #   交叉分析口径、平台档案、基准
-│       │   ├── scripts/            #   纯 Node 内置（fs/path），零 npm 依赖
-│       │   │   ├── lib/cross_analysis.js   #  多源交叉分析内核
-│       │   │   ├── lib/http_resilient.js   #  采集韧性库（自带自检）
-│       │   │   └── smoke-test.js           #  离线回归（39 条断言）
-│       │   ├── assets/             #   logo（base64 内嵌）、report-template.html
-│       │   ├── output/samples/     #   离线夹具（脱敏），供回归渲染用
-│       │   └── evals/
-│       └── platforms/              # 各端薄包装（按需新增）
-│           └── workbuddy/          #   WorkBuddy 包装
-│               ├── .codebuddy-plugin/plugin.json
-│               ├── agents/geo-brand-audit.md
-│               ├── avatars/expert.jpg
-│               ├── assemble.sh     #   把 skill/ 组装成自包含包（含自检）
-│               ├── README.md
-│               └── README.en.md
-└── .gitignore
+├── .gitignore
+├── geo-brand-audit/                # 专家 1：品牌GEO顾问
+│   ├── skill/                      # ★ 平台无关核心（被所有端共享，只此一份）
+│   │   ├── SKILL.md                #   方法论/工作流/评分权重/证据规则
+│   │   ├── references/             #   评分规则（含每维判定带）、检索剧本、
+│   │   │                           #   交叉分析口径、平台档案、基准
+│   │   ├── scripts/                #   纯 Node 内置（fs/path），零 npm 依赖
+│   │   │   ├── lib/cross_analysis.js   #  多源交叉分析内核
+│   │   │   ├── lib/http_resilient.js   #  采集韧性库（自带自检）
+│   │   │   └── smoke-test.js           #  离线回归（39 条断言）
+│   │   ├── assets/                 #   logo（base64 内嵌）、report-template.html
+│   │   ├── output/samples/         #   离线夹具（脱敏），供回归渲染用
+│   │   └── evals/
+│   └── platforms/                  # 各端薄包装（按需新增）
+│       └── workbuddy/              #   WorkBuddy 包装
+│           ├── .codebuddy-plugin/plugin.json
+│           ├── agents/geo-brand-audit.md
+│           ├── avatars/expert.jpg
+│           ├── assemble.sh         #   把 skill/ 组装成自包含包（含自检）
+│           ├── README.md
+│           └── README.en.md
+└── depoo-writer/                   # 专家 2：迪谱学长（公众号写作）
+    ├── skill/
+    │   ├── SKILL.md                #   方法论/文风/五层自检
+    │   ├── references/             #   文风档案、自检、去AI味、发布、流程
+    │   ├── scripts/                #   md_to_wechat_html.py（克制·编辑感排版）
+    │   └── assets/serial.txt       #   「第 N 篇原创」计数
+    └── platforms/
+        └── workbuddy/
+            ├── .codebuddy-plugin/plugin.json
+            ├── agents/depoo-writer.md
+            ├── avatars/expert.jpg
+            ├── assemble.sh
+            ├── README.md
+            └── README.en.md
 ```
 
 ## 跨平台适配模型
@@ -87,7 +102,7 @@ kenz-ai-experts/
 
 ## 入住一个新专家
 
-1. 在 `experts/<name>/` 下新建 `skill/`（平台无关核心）和 `platforms/<x>/`（首个目标端包装）
+1. 在 `<name>/` 下新建 `skill/`（平台无关核心）和 `platforms/<x>/`（首个目标端包装）
 2. 在 `skill/SKILL.md` 写方法论；在 `platforms/<x>/` 放该端外壳（参考 `geo-brand-audit`）
 3. 在本 README「专家目录」表格加一行
 4. 提交并同步（见下方「同步到 GitHub」）
@@ -95,21 +110,21 @@ kenz-ai-experts/
 ## 安装到 WorkBuddy
 
 ```bash
-bash experts/geo-brand-audit/platforms/workbuddy/assemble.sh
-cp -R experts/geo-brand-audit/platforms/workbuddy/dist/geo-brand-audit \
-  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/
+bash geo-brand-audit/platforms/workbuddy/assemble.sh
+cp -R geo-brand-audit/platforms/workbuddy/dist/geo-brand-audit \
+  ~/.workbuddy/plugins/marketplaces/my-plugins/
 python3 ~/.workbuddy/plugins/cache/workbuddy-builtin/skill-expert-manager/0.1.0/scripts/register_expert.py \
-  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/geo-brand-audit
+  ~/.workbuddy/plugins/marketplaces/my-plugins/geo-brand-audit
 ```
 
 depoo-writer 同理：
 
 ```bash
-bash experts/depoo-writer/platforms/workbuddy/assemble.sh
-cp -R experts/depoo-writer/platforms/workbuddy/dist/depoo-writer \
-  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/
+bash depoo-writer/platforms/workbuddy/assemble.sh
+cp -R depoo-writer/platforms/workbuddy/dist/depoo-writer \
+  ~/.workbuddy/plugins/marketplaces/my-plugins/
 python3 ~/.workbuddy/plugins/cache/workbuddy-builtin/skill-expert-manager/0.1.0/scripts/register_expert.py \
-  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/depoo-writer
+  ~/.workbuddy/plugins/marketplaces/my-plugins/depoo-writer
 ```
 
 ## 同步到 GitHub
