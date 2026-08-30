@@ -100,21 +100,14 @@ kenz-ai-experts/
 
 接入新平台 = 在 `platforms/` 下加一个薄包装目录，不动 `skill/`。
 
-## 入住一个新专家
-
-1. 在 `<name>/` 下新建 `skill/`（平台无关核心）和 `platforms/<x>/`（首个目标端包装）
-2. 在 `skill/SKILL.md` 写方法论；在 `platforms/<x>/` 放该端外壳（参考 `geo-brand-audit`）
-3. 在本 README「专家目录」表格加一行
-4. 提交并同步（见下方「同步到 GitHub」）
-
 ## 安装到 WorkBuddy
 
 ```bash
 bash geo-brand-audit/platforms/workbuddy/assemble.sh
 cp -R geo-brand-audit/platforms/workbuddy/dist/geo-brand-audit \
-  ~/.workbuddy/plugins/marketplaces/my-plugins/
+  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/
 python3 ~/.workbuddy/plugins/cache/workbuddy-builtin/skill-expert-manager/0.1.0/scripts/register_expert.py \
-  ~/.workbuddy/plugins/marketplaces/my-plugins/geo-brand-audit
+  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/geo-brand-audit
 ```
 
 depoo-writer 同理：
@@ -122,30 +115,15 @@ depoo-writer 同理：
 ```bash
 bash depoo-writer/platforms/workbuddy/assemble.sh
 cp -R depoo-writer/platforms/workbuddy/dist/depoo-writer \
-  ~/.workbuddy/plugins/marketplaces/my-plugins/
+  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/
 python3 ~/.workbuddy/plugins/cache/workbuddy-builtin/skill-expert-manager/0.1.0/scripts/register_expert.py \
-  ~/.workbuddy/plugins/marketplaces/my-plugins/depoo-writer
+  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/depoo-writer
 ```
 
-## 同步到 GitHub
+## 维护与贡献
 
-本仓库的同步走 GitHub Contents API（沙箱代理封了 git 推送主机，但放行 `api.github.com`）。
+想新增专家、调整目录结构，或要把改动同步到 GitHub —— 完整规范见 **[CONTRIBUTING.md](CONTRIBUTING.md)**。
 
-用脚本 `/tmp/sync_repo.py`：比对本地树与 GitHub 树后做增量同步 ——
-GitHub 有而本地无的走 `DELETE`，本地有而 GitHub 有的带 `sha` 走 `PUT`（更新），
-本地新增的直接 `PUT`。**幂等，可反复跑**。
+那里定义了：目录结构标准（含「平铺、不套 `experts/` 中间层」这条铁律）、新专家入住流程、文件与版本规范、同步操作的风险与禁令，以及入住前 / 同步前的检查清单。
 
-> 更新已存在的文件必须带 blob `sha`，否则会报 `422 "sha wasn't supplied"`。
-> 空仓库上 Git Database API（blobs/trees/commits）会 409 `Git Repository is empty`，
-> 所以首发用 Contents API 逐文件建、之后用 sync_repo.py 增量维护。
-
-早期的一次性脚本是 `/tmp/push_contents.py`（只写不删），已被 `sync_repo.py` 取代。
-
-> 注：本地 `git push` 在此沙箱环境不通（代理白名单限制），GitHub 才是 source of truth；在普通网络环境直接 `git clone` + 常规 git 工作流即可。
-
-## 规范要点
-
-- 头像：`avatars/expert.jpg`，512×512，≤500KB（PNG/JPG）
-- `plugin.json` 内 `displayDescription.zh` 需 40–50 字；`defaultInitPrompt.zh` 应与 `quickPrompts[0].zh` 一致
-- 核心 `skill/` 内不得保留 `[TODO]` 占位；未知信息向用户确认，不编造
-- 核心是单一事实来源：任何端的新增能力应优先沉淀进 `skill/`，而非写进某个平台的包装
+> ⚠️ 一句话提醒：同步脚本是**全量 diff 且会删除远端文件**。动目录结构前，务必先按 CONTRIBUTING 里的命令核对远端真实结构。
