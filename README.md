@@ -9,7 +9,7 @@ KenZ 的 AI 专家智能体仓库 —— 一个 monorepo，收纳所有可复用
 | 专家 | 花名 | 分类 | 版本 | 简介 | 路径 |
 | --- | --- | --- | --- | --- | --- |
 | `geo-brand-audit` | 品牌GEO顾问 | 05-营销增长 | v1.2.0 | 可核查证据审计品牌在 AI 搜索的可见度：六维评分 + 竞品共现 + 多源交叉分析（社媒/热搜）+ HTML/MD 交付 | [experts/geo-brand-audit](experts/geo-brand-audit) |
-| `depoo-writer` | 迪谱学长 | 06-内容创作 | v1.0.0 | 交互式公众号写作专家：学长视角 + 差异化三角（懂业务/AI/增长），五层自检（含去 AI 味终检）+ 微信草稿箱一键发布 | [depoo-writer](depoo-writer) |
+| `depoo-writer` | 迪谱学长 | 06-内容创作 | v1.1.0 | 交互式公众号写作：深度确认 + 五层自检（含去 AI 味）+ 克制编辑感微信排版，默认交付可粘贴的 HTML | [experts/depoo-writer](experts/depoo-writer) |
 
 ### geo-brand-audit 的能力边界（选这个专家前先看）
 
@@ -28,11 +28,18 @@ KenZ 的 AI 专家智能体仓库 —— 一个 monorepo，收纳所有可复用
 
 | 能做的 | 不能做的 |
 | --- | --- |
-| 写 AI 工具实测 / 提效工作流 / 企业落地 / 观点随笔四类文章 | ❌ 没用过却写「实测感受」（硬红线：必须有一手素材） |
-| HKR 选题质检 + 横纵分析 + 升番叙事 | ❌ 不确认写作深度直接动笔（交互式：必问 D1/D2/D3） |
-| 五层自检（含 humanizer 24 模式去 AI 味） | ❌ L5 得分 <42 就放行发布 |
-| md → 微信内联 HTML → 草稿箱推送 | ❌ 不经用户确认就推送（外部动作必须确认） |
-| 苍何式骨架 + 金句 + 反鸡汤 + 头条节奏 | ❌ 写政治/色情/违法内容，或捏造经历 |
+| 交互式确认深度 / 素材 / 类型后再动笔 | ❌ 不问就闷头写、替你拍板选题 |
+| 五层自检，含去 AI 味终检（25 种模式） | ❌ 保证过审（只给质量判断，终审在你） |
+| 渲染克制编辑感的微信内联 HTML，复制即贴 | ❌ 绕过微信外链限制（正文外链会降级为纯文本） |
+| 未认证账号也能交付（路径 A 手动粘贴） | ❌ 替未认证账号推草稿箱（`draft/add` 需认证） |
+| 没用过就明说没用过 | ❌ 编造实测体验、数据、案例 |
+
+### depoo-writer 的交付方式
+
+- **路径 A（默认）**：渲染 `微信正文.html` + 浏览器预览，全选复制粘贴到公众号后台。**无需接口权限**。
+- **路径 B（可选）**：调 `draft/add` 推草稿箱，**需账号已微信认证**（未认证返回 48001），且必须用户明确要求。
+
+详见 `experts/depoo-writer/platforms/workbuddy/README.md`。
 
 ## 仓库结构（以 geo-brand-audit 为例）
 
@@ -93,6 +100,16 @@ cp -R experts/geo-brand-audit/platforms/workbuddy/dist/geo-brand-audit \
   ~/.workbuddy/plugins/marketplaces/my-experts/plugins/
 python3 ~/.workbuddy/plugins/cache/workbuddy-builtin/skill-expert-manager/0.1.0/scripts/register_expert.py \
   ~/.workbuddy/plugins/marketplaces/my-experts/plugins/geo-brand-audit
+```
+
+depoo-writer 同理：
+
+```bash
+bash experts/depoo-writer/platforms/workbuddy/assemble.sh
+cp -R experts/depoo-writer/platforms/workbuddy/dist/depoo-writer \
+  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/
+python3 ~/.workbuddy/plugins/cache/workbuddy-builtin/skill-expert-manager/0.1.0/scripts/register_expert.py \
+  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/depoo-writer
 ```
 
 ## 同步到 GitHub
