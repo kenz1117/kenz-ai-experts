@@ -10,7 +10,8 @@ KenZ 的 AI 专家智能体仓库 —— 一个 monorepo，收纳所有可复用
 | --- | --- | --- | --- | --- | --- |
 | `geo-brand-audit` | 品牌GEO顾问 | 05-营销增长 | v1.2.0 | 可核查证据审计品牌在 AI 搜索的可见度：六维评分 + 竞品共现 + 多源交叉分析（社媒/热搜）+ HTML/MD 交付 | [geo-brand-audit](geo-brand-audit) |
 | `depoo-writer` | 迪谱学长 | 06-内容创作 | v1.1.0 | 交互式公众号写作：深度确认 + 五层自检（含去 AI 味）+ 克制编辑感微信排版，默认交付可粘贴的 HTML | [depoo-writer](depoo-writer) |
-| `chinafde-white-paper` | 中国FDE白皮书 | 07-研究报告 | v0.1.0 | 中国 AI 现场部署服务（FDE）行业白皮书：九章 + 附录开源 Markdown 版，含 SVG 插图与引用规范 | [chinafde-white-paper](chinafde-white-paper) |
+
+> 📦 研究报告类资产已迁出：`chinafde-white-paper`（中国FDE白皮书）自 2026-10-30 起迁至 [kenz-ai-fde](https://github.com/kenz1117/kenz-ai-fde) 仓库，本仓库只保留专家智能体。
 
 ### geo-brand-audit 的能力边界（选这个专家前先看）
 
@@ -41,17 +42,6 @@ KenZ 的 AI 专家智能体仓库 —— 一个 monorepo，收纳所有可复用
 - **路径 B（可选）**：调 `draft/add` 推草稿箱，**需账号已微信认证**（未认证返回 48001），且必须用户明确要求。
 
 详见 `depoo-writer/platforms/workbuddy/README.md`。
-
-### chinafde-white-paper（研究报告，非专家智能体）
-
-**[中国AI现场部署服务（FDE）行业白皮书](chinafde-white-paper/README.md)** —— 张研ᴷᴱᴺ 著，开源 Markdown 版（v0.1.0）。
-
-- **主题**：企业 AI 从 Demo 走向生产的关键断层（系统对接、权限安全、流程改造、合规审计、组织协同与商业模式）。
-- **结构**：九章（行业背景 → 企业需求 → 人才市场 → 市场规模 → 商业化路径 → 挑战趋势 → 标杆案例 → 安全隐私 → 能力建设与职业发展）+ 摘要 + 附录 + 参考文献。
-- **资产**：全章节 Markdown + 程序化生成 SVG 插图 + `CITATION.cff` 引用规范。
-- **适合阅读**：CEO / CIO / 数字化负责人 / AI 交付负责人 / FDE / 售前与企业服务创业者。
-
-原文入口：[chinafde-white-paper/README.md](chinafde-white-paper/README.md)。
 
 ## 仓库结构
 
@@ -95,10 +85,6 @@ kenz-ai-experts/
             ├── assemble.sh
             ├── README.md
             └── README.en.md
-└── chinafde-white-paper/           # 研究项目：中国FDE白皮书（非专家智能体）
-    ├── README.md                   #   白皮书总览与目录
-    ├── CHANGELOG.md / CITATION.cff / LICENSE
-    └── zh/                         #   九章 + 摘要 + 附录 + 参考文献（含 SVG 插图）
 ```
 
 ## 跨平台适配模型
