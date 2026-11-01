@@ -11,7 +11,7 @@ KenZ 的 AI 专家智能体仓库 —— 一个 monorepo，收纳所有可复用
 | `geo-brand-audit` | 品牌GEO顾问 | 05-营销增长 | v1.2.0 | 可核查证据审计品牌在 AI 搜索的可见度：六维评分 + 竞品共现 + 多源交叉分析（社媒/热搜）+ HTML/MD 交付 | [geo-brand-audit](geo-brand-audit) |
 | `depoo-writer` | 迪谱学长 | 06-内容创作 | v1.1.0 | 交互式公众号写作：深度确认 + 五层自检（含去 AI 味）+ 克制编辑感微信排版，默认交付可粘贴的 HTML | [depoo-writer](depoo-writer) |
 
-> 📚 研究文稿类资产（非智能体项目）：[chinafde-white-paper](chinafde-white-paper)（中国FDE行业白皮书，2026-11-01 自 kenz-ai-fde 回迁）与 [ai-native-handbook-aliyun](ai-native-handbook-aliyun)（阿里云 AI Native 研发范式实践手册全文）。
+> 📚 研究文稿类资产（非智能体项目）：[chinafde-white-paper](chinafde-white-paper)（中国FDE行业白皮书，2026-11-01 自 [fde-business](https://github.com/kenz1117/fde-business) 回迁）与 [ai-native-handbook-aliyun](ai-native-handbook-aliyun)（阿里云 AI Native 研发范式实践手册全文）。
 
 ### geo-brand-audit 的能力边界（选这个专家前先看）
 
